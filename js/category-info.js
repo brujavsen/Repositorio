@@ -16,7 +16,7 @@ function showImagesGallery(array){
         `
 
         document.getElementById("productImagesGallery").innerHTML = htmlContentToAppend;
-    }
+    } 
 }
 
 //Función que se ejecuta una vez que se haya lanzado el evento de
