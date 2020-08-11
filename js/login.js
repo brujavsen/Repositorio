@@ -4,8 +4,8 @@
 document.addEventListener("DOMContentLoaded", function(e){
     document.getElementById('signin').addEventListener('submit', (event)=> {
         event.preventDefault();
-        location.href = "./index.html";
+        window.location.href = "./index.html";
         sessionStorage.setItem('logged', true);
         return true
     })
-}); 
+});

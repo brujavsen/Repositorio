@@ -34,16 +34,18 @@ var getJSONData = function(url){
     })
     .catch(function(error) {
         result.status = 'error';
-        result.data = error;
+        result.data = error; 
         hideSpinner();
         return result;
     });
 }
 
-  
-  // if (!sessionStorage.getItem("logged") && window.location.href.endsWith('index.html')); {
-  //    window.location.href = "index.html";
-  // }
+
+
+  if (!sessionStorage.getItem('logged') && (window.location.href.endsWith('index.html'))); {
+    window.location.href = "login.html";
+    return false
+  }
 
 
 
