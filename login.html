@@ -18,21 +18,21 @@
   
   <body class="text-center">
 
+    <div class="container">
       <form id="signin">
 
         <img src="./img/login.png" width="400" height="200"><hr/>
-          <h1 class="title">Registro</h1>
-          <h2 class="title">Registrese para ingresar</h2>
+          <h1 id="first-title">Registro</h1><br>
+          <h2 class="title">Registrese para ingresar</h2><br>
 
-        <!-- Datos personales -->
+        <!-- Datos personales - Inputs -->
 
-          <div id="datos-user">
+          <div class="datos-user">
             <label for="email" class="datos-style">|Correo electrónico|</label><br>
-            <input type="email" id="inputEmail" placeholder="Ingrese su email" required>
-          </div>
-          <div>
+            <input type="email" name="correo" id="Email" placeholder="Ingrese su email" required>
+            <br>
             <label for="password" class="datos-style">|Contraseña|</label><br>
-            <input type="password" id="inputPass" placeholder="Ingrese su contraseña" required>
+            <input type="password" name="contraseña" id="Password" placeholder="Ingrese su contraseña" required>
           </div>
 
         <!-- Checkbox Remember Me -->
@@ -45,6 +45,7 @@
         <button class="buttonSignIn" type="submit">Registrar</button> 
 
       </form>
+    </div>
 
     <script src="js/init.js"></script>
     <script src="js/login.js"></script>

@@ -42,11 +42,11 @@ var getJSONData = function(url){
 
 
 
-  if (!sessionStorage.getItem('logged') && (window.location.href.endsWith('index.html'))); {
-    window.location.href = "login.html";
-    return false
-  }
-
+  if (!window.location.href.endsWith('login.html')
+    && !sessionStorage.getItem('logged')) {
+      window.location.href = "login.html";
+ }
+  
 
 
 
