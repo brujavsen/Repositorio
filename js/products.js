@@ -6,7 +6,7 @@ function showProductList(array){
 
     for(let i = 0; i < array.length; i++){
         let category = array[i];
-
+ 
         htmlContentToAppend += `
         <div class="list-group-item list-group-item-action">
             <div class="row">
