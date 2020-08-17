@@ -1,52 +1,49 @@
-html, body{
-    height: 100%;
-  }
-
+  
   body {
-    display: -ms-flexbox;
-    display: flex;
-    -ms-flex-align: center;
-    align-items: center;
-    padding-top: 40px;
-    padding-bottom: 40px;
-    background-image: linear-gradient(-225deg, #d8ece6 50%, #c475b0 50%);
+    font-family: "Open Sans", sans-serif;
+    background: url("https://www.eluniversal.com.mx/sites/default/files/2019/11/22/mexico-mercado-comercio-movil.jpg") 50% fixed;
+    background-size: cover;
   }
 
   /* estilo de formulario */
   #signin {
     margin: auto;
-    width: 700px;
-    height: 650px;
-    padding: 10px;
-    background-image: linear-gradient(-225deg, #ecb18f 30%, #e2e1b2 20%);
-    border: 4px solid black;
-    font-family: monospace;
-    font-style: italic;
-    font-size: 150%;
-    text-shadow: 2px 2px 6px rgb(224, 3, 3);
-    filter: drop-shadow(0 -8mm 8mm rgb(7, 7, 7));
-    border-radius: 50px;
+    border-radius: 2px 2px 5px 5px;
+    padding: 10px 20px 20px 20px;
+    width: 390px;
+    height: 610px;
+    margin-top: 7px;
+    background: #ffffff;
+    padding-bottom: 75px;
+    box-shadow: 0px 1px 5px rgba(0,0,0,0.3);
+    background-image: linear-gradient(-225deg, #64cf4e 10%, #ffffff 20%);
+    box-shadow: 2px 3px 4px black;
   }
 
 
   /* estilo del titulo */
   #first-title {
+    color: rgb(223, 37, 115);
     font-family: fantasy;
     font-style: normal;
     letter-spacing: 4px;
+    text-shadow: 2px 2px 2px black;
   }
 
   .title {
-    font-family: monospace;
-    font-style: oblique;
-    font-size: 20px;
+    color: #444;
+    font-size: 1.2em;
+    font-weight: bold;
+    margin: 10px 0 30px 0;
+    text-shadow: 1px 1px 1px black;
   }
 
   /* estilo de submit */
 
   .buttonSignIn {
-    background-image: linear-gradient(-225deg, #ecb18f 30%, #e2e1b2 20%);
-    color: rgb(129, 14, 23);
+    margin-top: 10px;
+    background-image: linear-gradient(-225deg, #64cf4e 20%, #ffffff 30%);
+    color: rgb(7, 7, 7);
     padding: 10px 25px;
     text-align: center;
     font-family: monospace;
@@ -54,26 +51,43 @@ html, body{
     font-size: 18px;
     border-radius: 25px;
     text-shadow: 2px 2px 6px rgb(0, 0, 0);
-    filter: drop-shadow(0 -2mm 2mm rgb(7, 7, 7));
+    filter: drop-shadow(0 -0mm 3mm rgb(7, 7, 7));
+  }
+
+
+
+  .check-pass {
+    margin-top: 20px;
+    color: rgb(223, 37, 115);
+    text-shadow: 1px 1px 5px black;
   }
 
   /* estilo de datos personales*/
 
   .datos-user .datos-style {
-      background-color: white;
-      border: 1px solid black;
+    font-size: 18px;
   }
 
   .datos-user input[type=email] {
-    padding-right: 2%;
-    padding-left: 2%;
-    background-color: rgb(135, 219, 135);
-    color: rgb(194, 34, 34);
+    display: block;
+    padding: 15px 10px;
+    margin-bottom: 10px;
+    width: 100%;
+    border: 1px solid #ddd;
+    transition: border-width 0.2s ease;
+    border-radius: 2px;
+    color: rgb(206, 14, 14);
+    border: 1px solid gray;
   }
 
   .datos-user input[type=password] {  
-    padding-right: 2%;
-    padding-left: 2%;
-    background-color: rgb(135, 219, 135);
-    color: rgb(194, 34, 34);
+    display: block;
+    padding: 15px 10px;
+    margin-bottom: 10px;
+    width: 100%;
+    border: 1px solid #ddd;
+    transition: border-width 0.2s ease;
+    border-radius: 2px;
+    color: rgb(206, 14, 14);
+    border: 1px solid gray;
   }
