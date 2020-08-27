@@ -144,3 +144,15 @@ a.custom-card:hover {
   text-align: center;
   font-size: 300%;
 }
+
+#cat-style2 {
+  text-align: center;
+  font-size: 100%;
+  margin-bottom: 20px;
+}
+
+#userIcon {
+  color: rgb(111, 199, 71);
+}
+
+

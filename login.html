@@ -14,6 +14,7 @@
     <link href="css/bootstrap.min.css" rel="stylesheet">
     <link href="css/styles.css" rel="stylesheet">
     <link href="css/logStyle.css" rel="stylesheet">
+    <script src="https://kit.fontawesome.com/806392c754.js" crossorigin="anonymous"></script>
   </head>
   
   <body class="text-center">
@@ -27,12 +28,19 @@
 
         <!-- Datos personales - Inputs -->
 
-          <div class="datos-user">
-            <label for="email" class="datos-style">Correo electrónico</label><br>
-            <input type="email" name="correo" id="Email" placeholder="Ingrese su email" required>
-            
-            <label for="password" class="datos-style">Contraseña</label><br>
-            <input type="password" name="contraseña" id="Password" placeholder="Ingrese su contraseña" required>
+          <div class="datos-user"> 
+
+            <i class="fas fa-user">
+              <label for="user" class="datos-style">Nombre completo</label></i><br>
+            <input type="text" name="nombreCompleto" id="inputUser" placeholder="Ingrese su nombre completo" required>
+
+            <i class="far fa-envelope">
+            <label for="email" class="datos-style">Correo electrónico</label></i><br>
+            <input type="email" name="correo" id="inputEmail" placeholder="Ingrese su correo electrónico" required>
+
+            <i class="fas fa-key">
+            <label for="password" class="datos-style">Contraseña</label></i><br>
+            <input type="password" name="contraseña" id="inputPass" placeholder="Ingrese su contraseña" required>
           </div>
 
         <!-- Checkbox Remember Me -->
@@ -43,7 +51,7 @@
           </div>
 
         <button class="buttonSignIn" type="submit">Registrar</button> 
-
+        
       </form>
     </div>
 

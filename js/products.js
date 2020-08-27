@@ -1,5 +1,3 @@
-var productsArray = {};
-
 function showProductList(array){
 
     let htmlContentToAppend = "";
@@ -15,17 +13,24 @@ function showProductList(array){
                 </div>
                 <div class="col">
                     <div class="d-flex w-100 justify-content-between">
-                        <h4 class="mb-1">`+ category.name +`</h4>
-                        <small class="text-muted">` + category.description + category.soldCount + ` artículos</small>
+                        <h3 class="mb-1">`+ category.name +`</h4>
                     </div>
+                    <div class="d-flex w-100 justify-content-between">
+                        <small class="text-muted">` + category.description +`</small>
+                    </div>
+                    <div class="d-flex w-100 justify-content-between">
+                        <small class="text-muted">`+ category.soldCount +` articulos</small>
+                    </div>
+                    <div class="d-flex w-100 justify-content-between">
+                        <small class="text-muted">`+ category.cost + " " + category.currency +` </small>
+                    </div> 
                 </div>
             </div>
         </div>
         `
-
-        document.getElementById("categoria").innerHTML = htmlContentToAppend;
-    } 
-}
+    }  
+    document.getElementById("categoria").innerHTML = htmlContentToAppend;
+} 
 
 
 //Función que se ejecuta una vez que se haya lanzado el evento de
@@ -33,12 +38,52 @@ function showProductList(array){
 //elementos HTML presentes.
 document.addEventListener("DOMContentLoaded", function (e) {
     getJSONData(PRODUCTS_URL).then(function(resultObj){
-        if (resultObj.status === "ok")
-        {
-            productsArray = resultObj.data;
-            //Muestro las categorías ordenadas
-            showProductList(productsArray);
-        } 
+    if (resultObj.status === "ok"){
+    var productsArray = resultObj.data;
+
+
+    //Input cantidad
+    document.getElementById("filtrar-cant").addEventListener("click", ()=>{
+        productsArray.sort((a,b) =>{
+        if(a.soldCount < b.soldCount) return -1;
+        else if(a.soldCount > b.soldCount) return 1;
+        return 0;
+        });
+    showProductList(productsArray);
     });
 
-}); 
+    //Input mayor precio (orden ascendente)
+    document.getElementById("orderAscen").addEventListener("click", ()=>{
+        productsArray.sort((a, b) => {
+            if (a.cost < b.cost) return 1;
+            else if (a.cost > b.cost) return -1;
+            return 0;
+        });
+    showProductList(productsArray);
+    });
+
+    //Input menor precio (orden descendente)
+    document.getElementById("orderDesce").addEventListener("click", ()=>{
+        productsArray.sort((a, b) => {
+          if (a.cost < b.cost) return -1;
+          else if (a.cost > b.cost) return 1;
+          return 0;
+        });
+    showProductList(productsArray);
+    });
+
+    //Input relevancia
+    document.getElementById("orderRel").addEventListener("click", ()=>{
+        productsArray.sort((a,b) =>{
+        if(a.soldCount < b.soldCount) return 1;
+        else if(a.soldCount > b.soldCount) return -1;
+        return 0;
+        });
+    showProductList(productsArray);
+    });
+
+    //Muestra los productos en el orden original de JSON
+    showProductList(productsArray);
+};
+});
+});

@@ -13,11 +13,11 @@ var showSpinner = function(){
 
 var hideSpinner = function(){
   document.getElementById("spinner-wrapper").style.display = "none";
-} 
+}  
 
 var getJSONData = function(url){
     var result = {};
-    showSpinner();
+
     return fetch(url)
     .then(response => {
       if (response.ok) {
@@ -29,16 +29,17 @@ var getJSONData = function(url){
     .then(function(response) {
           result.status = 'ok';
           result.data = response;
-          hideSpinner();
+          
           return result;
     })
     .catch(function(error) {
         result.status = 'error';
         result.data = error; 
-        hideSpinner();
+        
         return result;
     });
 }
+
 
 
 
@@ -46,8 +47,17 @@ var getJSONData = function(url){
     && !sessionStorage.getItem('logged')) {
       window.location.href = "login.html";
  }
-  
+ 
+   
+ const headDiv = document.getElementById('usuarios');
+ const userIcon = document.getElementById('userIcon');
 
+ let nameUser = JSON.parse(localStorage.getItem('users'));
+
+
+ if(nameUser != null){
+    headDiv.innerHTML = '<a class="py-2 d-none d-md-inline-block" href="my-profile.html" id="userIcon">'+nameUser[0].usuario+'</a>';
+ }
 
 
 //Función que se ejecuta una vez que se haya lanzado el evento de

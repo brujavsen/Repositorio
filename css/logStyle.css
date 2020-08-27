@@ -10,8 +10,8 @@
     margin: auto;
     border-radius: 2px 2px 5px 5px;
     padding: 10px 20px 20px 20px;
-    width: 390px;
-    height: 610px;
+    width: 400px;
+    height: 611px;
     margin-top: 7px;
     background: #ffffff;
     padding-bottom: 75px;
@@ -41,10 +41,11 @@
   /* estilo de submit */
 
   .buttonSignIn {
-    margin-top: 10px;
+    margin-top: 1px;
+    margin-bottom: 1px;
     background-image: linear-gradient(-225deg, #64cf4e 20%, #ffffff 30%);
     color: rgb(7, 7, 7);
-    padding: 10px 25px;
+    padding: 5px 15px;
     text-align: center;
     font-family: monospace;
     display: inline-block;
@@ -57,7 +58,7 @@
 
 
   .check-pass {
-    margin-top: 20px;
+    margin-top: 10px;
     color: rgb(223, 37, 115);
     text-shadow: 1px 1px 5px black;
   }
@@ -68,24 +69,12 @@
     font-size: 18px;
   }
 
-  .datos-user input[type=email] {
+  .datos-user input[type=text], input[type=email], input[type=password]{ 
+    margin-top: 0px; 
     display: block;
-    padding: 15px 10px;
+    padding: 5px 10px;
     margin-bottom: 10px;
     width: 100%;
-    border: 1px solid #ddd;
-    transition: border-width 0.2s ease;
-    border-radius: 2px;
-    color: rgb(206, 14, 14);
-    border: 1px solid gray;
-  }
-
-  .datos-user input[type=password] {  
-    display: block;
-    padding: 15px 10px;
-    margin-bottom: 10px;
-    width: 100%;
-    border: 1px solid #ddd;
     transition: border-width 0.2s ease;
     border-radius: 2px;
     color: rgb(206, 14, 14);

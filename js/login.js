@@ -4,9 +4,26 @@
 document.addEventListener("DOMContentLoaded", function(e){
 });
 
-document.getElementById('signin').addEventListener('submit', function(event) {
+const form = document.getElementById('signin')
+const userName = document.getElementById("inputUser");
+const userEmail = document.getElementById("inputEmail");
+const userPass = document.getElementById("inputPass");
+
+
+form.addEventListener('submit', function(event) {
     event.preventDefault();
-    window.location.href = "./index.html";
+
+let user = Array(
+    {
+        usuario: userName.value,
+        correo: userEmail.value,
+        clave: userPass.value
+    } 
+);
+
+localStorage.setItem('users', JSON.stringify(user));
+
+window.location.href = "./index.html";
     sessionStorage.setItem('logged', true);
     return true
-})
+});
