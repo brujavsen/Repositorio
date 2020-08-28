@@ -42,7 +42,54 @@ document.addEventListener("DOMContentLoaded", function (e) {
     var productsArray = resultObj.data;
 
 
-    //Input cantidad
+    // Input buscar por nombre del producto
+    const search_bar = document.getElementById("search");
+    const boton_srch = document.getElementById("search-btn");
+    const result = document.getElementById("categoria");
+
+    let filtrado = ()=>{
+        
+        result.innerHTML = '';
+
+        var texto = search_bar.value.toLowerCase();
+
+        for(let productoArr of productsArray){
+            let nombre = productoArr.name.toLowerCase();
+            if(nombre.indexOf(texto) !== -1){
+                result.innerHTML += `<div id="categoria"><div class="list-group-item list-group-item-action">
+                <div class="row">
+                    <div class="col-3">
+                        <img src="` + productoArr.imgSrc + `" alt="` + productoArr.description + `" class="img-thumbnail">
+                    </div>
+                    <div class="col">
+                        <div class="d-flex w-100 justify-content-between">
+                            <h3 class="mb-1">`+ productoArr.name +`</h4>
+                        </div>
+                        <div class="d-flex w-100 justify-content-between">
+                            <small class="text-muted">` + productoArr.description +`</small>
+                        </div>
+                        <div class="d-flex w-100 justify-content-between">
+                            <small class="text-muted">`+ productoArr.soldCount +` articulos</small>
+                        </div>
+                        <div class="d-flex w-100 justify-content-between">
+                            <small class="text-muted">`+ productoArr.cost + " " + productoArr.currency +` </small>
+                        </div> 
+                    </div>
+                </div>
+            </div></div>`;
+            }
+        }
+
+        if(result.innerHTML === ''){
+            result.innerHTML += `<p>No se encontró el producto</p>`
+        }
+    }
+
+    boton_srch.addEventListener('click', filtrado)
+    search_bar.addEventListener('keyup', filtrado)
+
+    
+    //Input filtrar por cantidad
     document.getElementById("filtrar-cant").addEventListener("click", ()=>{
         productsArray.sort((a,b) =>{
         if(a.soldCount < b.soldCount) return -1;
@@ -52,7 +99,7 @@ document.addEventListener("DOMContentLoaded", function (e) {
     showProductList(productsArray);
     });
 
-    //Input mayor precio (orden ascendente)
+    //Input filtrar por mayor precio (orden ascendente)
     document.getElementById("orderAscen").addEventListener("click", ()=>{
         productsArray.sort((a, b) => {
             if (a.cost < b.cost) return 1;
@@ -62,7 +109,7 @@ document.addEventListener("DOMContentLoaded", function (e) {
     showProductList(productsArray);
     });
 
-    //Input menor precio (orden descendente)
+    //Input filtrar por menor precio (orden descendente)
     document.getElementById("orderDesce").addEventListener("click", ()=>{
         productsArray.sort((a, b) => {
           if (a.cost < b.cost) return -1;
@@ -72,7 +119,7 @@ document.addEventListener("DOMContentLoaded", function (e) {
     showProductList(productsArray);
     });
 
-    //Input relevancia
+    //Input filtrar por relevancia
     document.getElementById("orderRel").addEventListener("click", ()=>{
         productsArray.sort((a,b) =>{
         if(a.soldCount < b.soldCount) return 1;
@@ -82,7 +129,7 @@ document.addEventListener("DOMContentLoaded", function (e) {
     showProductList(productsArray);
     });
 
-    //Muestra los productos en el orden original de JSON
+    //Muestra los productos en el orden original del JSON
     showProductList(productsArray);
 };
 });

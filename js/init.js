@@ -47,8 +47,14 @@ var getJSONData = function(url){
     && !sessionStorage.getItem('logged')) {
       window.location.href = "login.html";
  }
- 
+ const signUpSession = document.getElementById("cerrarSesion")
+
+ signUpSession.addEventListener('click', () =>{
+     sessionStorage.removeItem('logged', true);
+     window.location.href = "./login.html";
+ });
    
+
  const headDiv = document.getElementById('usuarios');
  const userIcon = document.getElementById('userIcon');
 

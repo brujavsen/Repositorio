@@ -155,4 +155,9 @@ a.custom-card:hover {
   color: rgb(111, 199, 71);
 }
 
+#signUp {
+  margin-left: -89px;
+  font-size: 18px;
+  color: rgb(207, 20, 20);
+}
 

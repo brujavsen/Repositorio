@@ -70,13 +70,19 @@
   }
 
   .datos-user input[type=text], input[type=email], input[type=password]{ 
-    margin-top: 0px; 
-    display: block;
-    padding: 5px 10px;
+    margin-top: 0px;
     margin-bottom: 10px;
-    width: 100%;
+    margin-inline-end: auto;
+    margin-inline-start: auto;
+    padding: 5px 10px;
+    width: 90%;
     transition: border-width 0.2s ease;
-    border-radius: 2px;
+    border-radius: 6px;
     color: rgb(206, 14, 14);
     border: 1px solid gray;
   }
+
+  .container i {
+    margin-left: -27px;
+    cursor: pointer;
+}
