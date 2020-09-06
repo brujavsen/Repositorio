@@ -28,7 +28,7 @@ window.location.href = "./index.html";
     sessionStorage.setItem('logged', true);
     return true
 });
-
+ 
 
 //mostrar u ocultar contraseña
 const togglePass = document.getElementById("togglePass");

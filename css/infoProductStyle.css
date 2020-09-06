@@ -1,0 +1,115 @@
+@charset "utf-8";
+
+body{
+    margin: 0;
+    padding: 0;
+    font-family: sans-serif;
+    background-image: linear-gradient(-225deg, #a1a7a0 17%, #ffffff 20%);
+}
+
+.slider {
+    border: 2px solid rgb(131, 10, 10);
+    margin: 343px;
+    margin-bottom: 0;
+    margin-top: 0;
+    overflow: hidden;
+    border-radius: 1%;
+}
+
+.slider, .slider-img, .img img{
+    max-width: 100%;
+    display: block;
+    position: relative;
+    animation: zoom 1s ease;
+}
+
+@keyframes zoom{
+    0%{transform: scale(2); opacity: 0;}
+    100%{transform: scale(1); opacity: 1;}
+}
+
+.slider, .slider-img, .img{
+    display: none;
+}
+
+.slider, .slider-img, .img.active{
+    display: block;
+}
+
+.slider .left-slide, .slider .right-slide{
+    position: absolute;
+    height: 40px;
+    width: 40px;
+    background-color: #252323;
+    border-radius: 50%;
+    color: #ffffff;
+    font-size: 14px;
+    top: 50%;
+    cursor: pointer;
+    margin-top: -20px;
+    text-align: center;
+    line-height: 40px;
+    transition: all .5s ease;
+}
+
+.slider .left-slide:hover, .slider .right-slide:hover{
+    background-color: rgb(235, 41, 41);
+    box-shadow: 0px 0px 15px white;
+}
+
+.slider .left-slide{
+    left: 30px;
+}
+
+.slider .right-slide{
+    right: 30px;
+}
+
+#container-productInfo{
+    background-image: url("https://image.freepik.com/foto-gratis/textura-fondo-asfalto-aspero_53419-2392.jpg");
+    background-size: cover;
+    border: 2px solid grey;
+    font-size: 20px;
+    margin-top: 5%;
+    text-align: center;
+    color: white;
+    text-shadow: 1px 1px 2px black;
+    inline-size: 80%;
+    margin-top: 1%;
+    margin-left: 10%;
+    border-radius: 2%;
+}
+
+#container-productInfo .title {
+    font-size: 40px;
+    color: rgb(53, 52, 52);
+    background-image: linear-gradient(-225deg, #df1458 10%, #ffffff 30%);
+    inline-size: 40%;
+    margin-left: auto;
+    margin-right: auto;
+    font-family: monospace;
+}
+
+#container-productInfo .costo{
+    color: rgb(26, 25, 25);
+    font-size: 30px;
+    font-family: monospace;
+    background-image: linear-gradient(-225deg, #64cf4e 10%, #ffffff 30%);
+    inline-size: 15%;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+.commentProduct {
+    inline-size: 50%;
+    font-size: 23px;
+    margin-left: 10%;
+    border-radius: 50%;
+
+}
+
+.commentProduct:hover {
+    color: skyblue;
+    background: skyblue;
+}
+

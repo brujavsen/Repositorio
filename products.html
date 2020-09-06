@@ -13,7 +13,7 @@
     <link href="css/bootstrap.min.css" rel="stylesheet">
     <link href="css/styles.css" rel="stylesheet">
   </head>
-  <body>
+  <body onload="clockOnTime()"> 
     <nav class="site-header sticky-top py-1 bg-dark">
       <div class="container d-flex flex-column flex-md-row justify-content-between">
         <a class="py-2 d-none d-md-inline-block" href="index.html">Inicio <i class="fas fa-home"></i></a>
@@ -21,10 +21,8 @@
         <a class="py-2 d-none d-md-inline-block" href="products.html">Productos <i class="fas fa-shopping-basket"></i></a>
         <a class="py-2 d-none d-md-inline-block" href="sell.html">Vender <i class="fas fa-box"></i></a>
         <a class="py-2 d-none d-md-inline-block" href="cart.html">Mi carrito <i class="fas fa-shopping-cart"></i></a>
-        <div id="usuarios">
-          <a class="py-2 d-none d-md-inline-block" href="my-profile.html" id="userIcon"></a>
-        </div>
-        <a class="py-2 d-none d-md-inline-block" href="" id="cerrarSesion"><i class="fas fa-sign-in-alt" id="signUp"></i></a>
+        <a class="py-2 d-none d-md-inline-block" href="my-profile.html" id="userProfile"><a class="py-2 d-none d-md-inline-block" href="" id="cerrarSesion"><i class="fas fa-sign-in-alt" id="signOff"></i></a></a>
+        <div id="clock" class="card bg-info text-white"></div>
       </div>
     </nav>
     <main role="main" class="menu">

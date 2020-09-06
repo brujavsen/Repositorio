@@ -59,6 +59,17 @@ footer p {
   transition: ease-in-out color .15s;
 }
 
+
+
+.site-header, #userProfile:hover, a:hover {
+  color: royalblue;
+}
+
+.site-header a:active {
+  color: brown;
+}
+
+
 .light-text {
   color: white;
 }
@@ -151,13 +162,34 @@ a.custom-card:hover {
   margin-bottom: 20px;
 }
 
-#userIcon {
+#userProfile {
   color: rgb(111, 199, 71);
+  white-space: nowrap;
 }
 
-#signUp {
-  margin-left: -89px;
+#signOff {
+  margin-left: -90px;
   font-size: 18px;
   color: rgb(207, 20, 20);
+  white-space: nowrap;
+}
+
+#clock {
+  background-image: url("https://www.xmple.com/wallpaper/red-gradient-pink-linear-1920x1080-c2-e9967a-db7093-a-300-f-14.svg");
+  background-size: cover;
+  font-family: monospace;
+  font-size: 15px;
+  color: #fff;
+  width: 100px;
+  margin-left: -100px;
+  align-items: center;
+  margin-inline-end: -100px;
+  border: 2px solid black;
+  border-radius: 90px 90px 90px 90px;
+}
+
+#clock:hover {
+  transform: rotate(360deg);
+  transition: ease-in-out 1s;
 }
 

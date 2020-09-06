@@ -6,31 +6,34 @@ function showProductList(array){
         let category = array[i];
  
         htmlContentToAppend += `
-        <div class="list-group-item list-group-item-action">
-            <div class="row">
-                <div class="col-3">
-                    <img src="` + category.imgSrc + `" alt="` + category.description + `" class="img-thumbnail">
-                </div>
-                <div class="col">
-                    <div class="d-flex w-100 justify-content-between">
-                        <h3 class="mb-1">`+ category.name +`</h4>
+        
+        <a href="./product-info.html">
+            <div class="list-group-item list-group-item-action">
+                <div class="row">
+                    <div class="col-3">
+                        <img src="` + category.imgSrc + `" alt="` + category.description + `" class="img-thumbnail">
                     </div>
-                    <div class="d-flex w-100 justify-content-between">
-                        <small class="text-muted">` + category.description +`</small>
+                    <div class="col">
+                        <div class="d-flex w-100 justify-content-between">
+                            <h3 class="mb-1">`+ category.name +`</h4>
+                        </div>
+                        <div class="d-flex w-100 justify-content-between">
+                            <small class="text-muted">` + category.description +`</small>
+                        </div>
+                        <div class="d-flex w-100 justify-content-between">
+                            <small class="text-muted">`+ category.soldCount +` articulos</small>
+                        </div>
+                        <div class="d-flex w-100 justify-content-between">
+                            <small class="text-muted">`+ category.cost + " " + category.currency +` </small>
+                        </div> 
                     </div>
-                    <div class="d-flex w-100 justify-content-between">
-                        <small class="text-muted">`+ category.soldCount +` articulos</small>
-                    </div>
-                    <div class="d-flex w-100 justify-content-between">
-                        <small class="text-muted">`+ category.cost + " " + category.currency +` </small>
-                    </div> 
                 </div>
             </div>
-        </div>
+        </a>
         `
     }  
     document.getElementById("categoria").innerHTML = htmlContentToAppend;
-} 
+}  
 
 
 //Función que se ejecuta una vez que se haya lanzado el evento de
@@ -41,7 +44,7 @@ document.addEventListener("DOMContentLoaded", function (e) {
     if (resultObj.status === "ok"){
     var productsArray = resultObj.data;
 
-
+    
     // Input buscar por nombre del producto
     const search_bar = document.getElementById("search");
     const boton_srch = document.getElementById("search-btn");
@@ -129,7 +132,6 @@ document.addEventListener("DOMContentLoaded", function (e) {
     showProductList(productsArray);
     });
 
-    //Muestra los productos en el orden original del JSON
     showProductList(productsArray);
 };
 });
