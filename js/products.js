@@ -7,7 +7,7 @@ function showProductList(array){
  
         htmlContentToAppend += `
         
-        <a href="./product-info.html">
+        <a href="./product-info.html?nameProduct=`+ category.name +`">
             <div class="list-group-item list-group-item-action">
                 <div class="row">
                     <div class="col-3">
