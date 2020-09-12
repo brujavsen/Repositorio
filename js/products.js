@@ -1,40 +1,47 @@
-function showProductList(array){
+var minCount = undefined;
+var maxCount = undefined;
+
+//Información sobre todos los productos
+function showProductList(products){
 
     let htmlContentToAppend = "";
 
-    for(let i = 0; i < array.length; i++){
-        let category = array[i];
- 
-        htmlContentToAppend += `
+    for(let i = 0; i < products.length; i++){
+        let category = products[i];
         
-        <a href="./product-info.html?nameProduct=`+ category.name +`">
-            <div class="list-group-item list-group-item-action">
-                <div class="row">
-                    <div class="col-3">
-                        <img src="` + category.imgSrc + `" alt="` + category.description + `" class="img-thumbnail">
-                    </div>
-                    <div class="col">
-                        <div class="d-flex w-100 justify-content-between">
-                            <h3 class="mb-1">`+ category.name +`</h4>
+        if (((minCount == undefined) || (minCount != undefined && parseInt(category.cost) >= minCount)) &&
+            ((maxCount == undefined) || (maxCount != undefined && parseInt(category.cost) <= maxCount))){
+
+            htmlContentToAppend += `
+            
+            <a href="./product-info.html?`+ category.name +`">
+                <div class="list-group-item list-group-item-action">
+                    <div class="row">
+                        <div class="col-3">
+                            <img src="` + category.imgSrc + `" alt="` + category.description + `" class="img-thumbnail">
                         </div>
-                        <div class="d-flex w-100 justify-content-between">
-                            <small class="text-muted">` + category.description +`</small>
-                        </div>
-                        <div class="d-flex w-100 justify-content-between">
-                            <small class="text-muted">`+ category.soldCount +` articulos</small>
-                        </div>
-                        <div class="d-flex w-100 justify-content-between">
-                            <small class="text-muted">`+ category.cost + " " + category.currency +` </small>
+                        <div class="col">
+                            <div class="d-flex w-100 justify-content-between">
+                                <h3 class="mb-1">`+ category.name +`</h4>
+                            </div>
+                            <div class="d-flex w-100 justify-content-between">
+                                <small class="text-muted">` + category.description +`</small>
+                            </div>
+                            <div class="d-flex w-100 justify-content-between">
+                                <small class="text-muted">`+ category.soldCount +` articulos</small>
+                            </div>
+                            <div class="d-flex w-100 justify-content-between">
+                                <small class="text-muted">`+ category.cost + " " + category.currency +` </small>
+                            </div> 
                         </div> 
                     </div>
-                </div>
-            </div>
-        </a>
-        `
+                </div> 
+            </a>
+            `
+            }
+        document.getElementById("categoria").innerHTML = htmlContentToAppend;
     }  
-    document.getElementById("categoria").innerHTML = htmlContentToAppend;
 }  
-
 
 //Función que se ejecuta una vez que se haya lanzado el evento de
 //que el documento se encuentra cargado, es decir, se encuentran todos los
@@ -59,27 +66,31 @@ document.addEventListener("DOMContentLoaded", function (e) {
         for(let productoArr of productsArray){
             let nombre = productoArr.name.toLowerCase();
             if(nombre.indexOf(texto) !== -1){
-                result.innerHTML += `<div id="categoria"><div class="list-group-item list-group-item-action">
-                <div class="row">
-                    <div class="col-3">
-                        <img src="` + productoArr.imgSrc + `" alt="` + productoArr.description + `" class="img-thumbnail">
+                result.innerHTML += `
+                <a href="./product-info.html?nameProduct=`+ productoArr.name +`">
+                    <div id="categoria">
+                        <div class="list-group-item list-group-item-action">
+                            <div class="row">
+                                <div class="col-3">
+                                    <img src="` + productoArr.imgSrc + `" alt="` + productoArr.description + `" class="img-thumbnail">
+                                </div>
+                                <div class="col">
+                                <div class="d-flex w-100 justify-content-between">
+                                    <h3 class="mb-1">`+ productoArr.name +`</h4>
+                                </div>
+                                <div class="d-flex w-100 justify-content-between">
+                                    <small class="text-muted">` + productoArr.description +`</small>
+                                </div>
+                                <div class="d-flex w-100 justify-content-between">
+                                    <small class="text-muted">`+ productoArr.soldCount +` articulos</small>
+                                </div>
+                                <div class="d-flex w-100 justify-content-between">
+                                    <small class="text-muted">`+ productoArr.cost + " " + productoArr.currency +` </small>
+                                </div> 
+                            </div>
+                        </div>
                     </div>
-                    <div class="col">
-                        <div class="d-flex w-100 justify-content-between">
-                            <h3 class="mb-1">`+ productoArr.name +`</h4>
-                        </div>
-                        <div class="d-flex w-100 justify-content-between">
-                            <small class="text-muted">` + productoArr.description +`</small>
-                        </div>
-                        <div class="d-flex w-100 justify-content-between">
-                            <small class="text-muted">`+ productoArr.soldCount +` articulos</small>
-                        </div>
-                        <div class="d-flex w-100 justify-content-between">
-                            <small class="text-muted">`+ productoArr.cost + " " + productoArr.currency +` </small>
-                        </div> 
-                    </div>
-                </div>
-            </div></div>`;
+                </a>`;
             }
         }
 
@@ -132,7 +143,40 @@ document.addEventListener("DOMContentLoaded", function (e) {
     showProductList(productsArray);
     });
 
-    showProductList(productsArray);
+    //Filtrado de precios
+    document.getElementById("clearRangeFilt").addEventListener("click", function(){
+        document.getElementById("FiltCountMin").value = "";
+        document.getElementById("FiltCountMax").value = "";
+
+        minCount = undefined;
+        maxCount = undefined;
+
+        showProductList(productsArray);
+    });
+
+    document.getElementById("rangeFiltCount").addEventListener("click", function(){
+        //Obtengo el mínimo y máximo de los intervalos para filtrar por cantidad
+        //de productos por categoría.
+        minCount = document.getElementById("FiltCountMin").value;
+        maxCount = document.getElementById("FiltCountMax").value;
+
+        if ((minCount != undefined) && (minCount != "") && (parseInt(minCount)) >= 0){
+            minCount = parseInt(minCount);
+        }
+        else{
+            minCount = undefined;
+        }
+
+        if ((maxCount != undefined) && (maxCount != "") && (parseInt(maxCount)) >= 0){
+            maxCount = parseInt(maxCount);
+        }
+        else{
+            maxCount = undefined;
+        }
+
+        showProductList(productsArray);
+    });
+    showProductList(productsArray)
 };
 });
 });

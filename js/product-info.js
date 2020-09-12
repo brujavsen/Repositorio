@@ -1,3 +1,4 @@
+
 //Información del producto
 fetch(PRODUCT_INFO_URL)
     .then(response => response.json())
@@ -5,28 +6,38 @@ fetch(PRODUCT_INFO_URL)
         //muestra en pantalla la información del producto
        let showProductInfo = document.getElementById("contenedorInfo");
        showProductInfo.innerHTML = `
-        
-       <div id="container-productInfo">
-            <div>
-                <h3 class="title">`+ info.name +`</h3>
-            </div>
+         
+        <div id="container-productInfo">
 
             <div>
+                <h2 class="title">`+ info.name +`</h2>
+            </div>
+
+            <div class="costo">
+                <p>`+ info.currency + " " + info.cost +` </p>
+            </div> 
+
+            <div class="soldCount">
+                <p>Cantidad: `+ info.soldCount +`</p>
+            </div>
+
+            <div class="categoryInfo">Categoria: `+info.category+`</div>
+
+            <a class="buyPrd" href="./cart.html">Añadir al carrito<a>
+
+        </div>
+
+        <div id="cnt-descInfo">
+            <div>
+                <h2>Descripción:</h2>
                 <p>` + info.description +`</p>
             </div>
-
-            <div>
-                <p>`+ info.soldCount +` articulos</p>
-            </div>
-
-            <div>
-                <p class="costo">`+ info.cost + " " + info.currency +` </p>
-            </div> 
-       </div>
-
+        </div>
         `
     });
 
+
+//SlideShow Images
     let slideImg = document.querySelector('.slider-img').children;
     let nextSlide = document.querySelector('.right-slide');
     let prevSlide = document.querySelector('.left-slide');
@@ -62,118 +73,109 @@ fetch(PRODUCT_INFO_URL)
     }
 
 
-//Comentarios del producto
+//Estrellas de comentarios
 
-fetch(PRODUCT_INFO_COMMENTS_URL)
-    .then(response => response.json())
-    .then(commentProd => {
-        //muestra en pantalla la información del producto
-       let showComments = document.getElementById("contenedorComments");
-       showComments.innerHTML = `
-        
-            <div class="commentProduct">
-                <div class="list-group-item">
-                    <div class="row">
-                        <div class="col">
-                            <div class="score-comment">
-                                    <span class="fa fa-star checked"></span>
-                                    <span class="fa fa-star checked"></span>
-                                    <span class="fa fa-star checked"></span>
-                                    <span class="fa fa-star"></span>
-                                    <span class="fa fa-star"></span>
-                            </div>
-                            <div>
-                                <h3 class="mb-1">`+ commentProd[0].user +`</h4>
-                            </div><br>
-                            <div>
-                                <small class="text-muted">` + commentProd[0].description +`</small>
-                            </div><br>
-                            <div>
-                                <small class="text-muted">`+ commentProd[0].dateTime +`</small>
-                            </div>
-                        </div>
+function showStar(stars){
+
+    let htmlContentComment = "";
+
+    for(let i=0; i < stars.score; i++){
+        htmlContentComment += `
+        <small class="text-muted"><span class="fa fa-star checked"></span></small>
+        `;
+    }
+    return htmlContentComment;
+}
+
+//Comentarios del producto
+function showComments(commentProd){
+
+    let htmlContentComment = "";
+
+        for(let i = 0; i < commentProd.length; i++){
+            let comments = commentProd[i];
+            htmlContentComment +=
+            `
+                <div class="commentProduct">
+                    <div>
+                        <h2>`+ comments.user + `<small class="text-muted">`+ showStar(comments) +`</small>`+ `</h2>
+                    </div><br>
+                    <div>
+                        <small class="commentDesc">` + comments.description +`</small>
+                    </div><br>
+                    <div>
+                        <small>`+ comments.dateTime +`</small>
                     </div>
                 </div>
-            </div>
-            <div class="commentProduct">
-                <div class="list-group-item">
-                    <div class="row">
-                        <div class="col">
-                            <div class="score-comment">
-                                    <span class="fa fa-star checked"></span>
-                                    <span class="fa fa-star checked"></span>
-                                    <span class="fa fa-star checked"></span>
-                                    <span class="fa fa-star checked"></span>
-                                    <span class="fa fa-star checked"></span>
-                            </div>
-                            <div>
-                                <h3 class="mb-1">`+ commentProd[1].user +`</h4>
-                            </div><br>
-                            <div>
-                                <small class="text-muted">` + commentProd[1].description +`</small>
-                            </div><br>
-                            <div>
-                                <small class="text-muted">`+ commentProd[1].dateTime +`</small>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-            <div class="commentProduct">
-                <div class="list-group-item">
-                    <div class="row">
-                        <div class="col">
-                            <div class="score-comment">
-                                    <span class="fa fa-star checked"></span>
-                                    <span class="fa fa-star checked"></span>
-                                    <span class="fa fa-star checked"></span>
-                                    <span class="fa fa-star checked"></span>
-                                    <span class="fa fa-star"></span>
-                            </div>
-                            <div>
-                                <h3 class="mb-1">`+ commentProd[2].user +`</h4>
-                            </div><br>
-                            <div>
-                                <small class="text-muted">` + commentProd[2].description +`</small>
-                            </div><br>
-                            <div>
-                                <small class="text-muted">`+ commentProd[2].dateTime +`</small>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-            <div class="commentProduct">
-                <div class="list-group-item">
-                    <div class="row">
-                        <div class="col">
-                            <div class="score-comment">
-                                    <span class="fa fa-star checked"></span>
-                                    <span class="fa fa-star checked"></span>
-                                    <span class="fa fa-star checked"></span>
-                                    <span class="fa fa-star checked"></span>
-                                    <span class="fa fa-star checked"></span>
-                            </div>
-                            <div>
-                                <h3 class="mb-1">`+ commentProd[3].user +`</h4>
-                            </div><br>
-                            <div>
-                                <small class="text-muted">` + commentProd[3].description +`</small>
-                            </div><br>
-                            <div>
-                                <small class="text-muted">`+ commentProd[3].dateTime +`</small>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        `
-    })
+            `
+        }
+        let showComments = document.getElementById("contenedorComments");
+        showComments.innerHTML = htmlContentComment
+}
 
 
 
 //Función que se ejecuta una vez que se haya lanzado el evento de
 //que el documento se encuentra cargado, es decir, se encuentran todos los
 //elementos HTML presentes.
-document.addEventListener("DOMContentLoaded", function(e){
+document.addEventListener("DOMContentLoaded", function(){
+
+    getJSONData(PRODUCT_INFO_COMMENTS_URL).then(function(resultObj){
+        if (resultObj.status === "ok"){
+        var infoComment = resultObj.data;
+        //muestra los comentarios del producto en pantalla
+        showComments(infoComment);
+        };
+    });
 }); 
+
+
+
+//Productos relacionados
+fetch(PRODUCTS_URL)
+    .then(response => response.json())
+    .then(relPrd => {
+
+        for(let i=0; i < relPrd.length; i++){
+            var relProd = relPrd[3]
+        }
+
+        //muestra en pantalla la información del producto
+        var showRelPrd = document.getElementById('car');
+        showRelPrd.innerHTML = `
+        <a href="./product-info.html?`+relProd.name+`">
+            <div class="productsRel">
+                <p>Productos de relevancia:</p>
+                <div class="col-3">
+                    <img src="` + relProd.imgSrc + `" alt="` + relProd.description + `" class="img-thumbnail">
+                    <h3 class="mb-1">`+ relProd.name +`</h3>
+                </div>
+                
+                <small class="text-muted">` + relProd.description +`</small><br>
+                <small class="text-muted">`+ relProd.soldCount +` articulos</small><br>
+                <small class="text-muted">`+ relProd.cost + " " + relProd.currency +` </small>
+            </div>
+        </a> 
+        `
+        for(let i=0; i < relPrd.length; i++){
+            var relProd = relPrd[1]
+        }
+
+        //muestra en pantalla la información del producto
+        var showRelPrd = document.getElementById('car');
+        showRelPrd.innerHTML += `
+        <a href="./product-info.html?`+relProd.name+`">
+            <div class="productsRel">
+                <div class="col-3">
+                    <img src="` + relProd.imgSrc + `" alt="` + relProd.description + `" class="img-thumbnail">
+                </div>
+                <h3 class="mb-1">`+ relProd.name +`</h4>
+                <small class="text-muted">` + relProd.description +`</small><br>
+                <small class="text-muted">`+ relProd.soldCount +` articulos</small><br>
+                <small class="text-muted">`+ relProd.cost + " " + relProd.currency +` </small>
+            </div>
+        </a> 
+        `
+    })
+
+

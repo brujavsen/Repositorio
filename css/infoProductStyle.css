@@ -1,5 +1,6 @@
 @charset "utf-8";
 
+/*Slideshow images*/
 body{
     margin: 0;
     padding: 0;
@@ -9,11 +10,13 @@ body{
 
 .slider {
     border: 2px solid rgb(255, 255, 255);
-    margin: 343px;
+    margin: 380px;
+    margin-left: 1%;
+    margin-right: 50%;
     margin-bottom: 0;
-    margin-top: 0;
+    margin-top: 1%;
     overflow: hidden;
-    border-radius: 1%;
+    border-radius: 1px;
 }
 
 .slider, .slider-img, .img img{
@@ -64,52 +67,168 @@ body{
 .slider .right-slide{
     right: 30px;
 }
+/*Slideshow images*/
 
+/* Contenedor de información del producto */
 #container-productInfo{
-    background-image: url("https://image.freepik.com/foto-gratis/textura-fondo-asfalto-aspero_53419-2392.jpg");
-    background-size: cover;
-    border: 2px solid grey;
-    font-size: 20px;
-    margin-top: 5%;
+    background-color: rgb(233, 201, 201);
+    border: 2px solid rgb(201, 199, 199);
+    box-shadow: 4px 2px 2px gray;
+    margin-top: 1%;
     text-align: center;
     color: white;
     text-shadow: 1px 1px 2px black;
-    inline-size: 80%;
-    margin-top: 1%;
-    margin-left: 10%;
+    inline-size: 40%;
+    margin-top: -35%;
+    margin-left: 58%;
+    padding-bottom: 5%;
     border-radius: 2%;
 }
 
+/* Contenedor de información del producto / titulo */
 #container-productInfo .title {
-    font-size: 40px;
-    color: rgb(53, 52, 52);
-    background-image: linear-gradient(-225deg, #df1458 10%, #ffffff 30%);
-    inline-size: 40%;
+    color: rgb(255, 255, 255);
+    inline-size: 80%;
+    margin-top: 5%;
+    margin-bottom: 10%;
     margin-left: auto;
     margin-right: auto;
     font-family: monospace;
+    font-size: 45px;
 }
 
-#container-productInfo .costo{
-    color: rgb(26, 25, 25);
-    font-size: 30px;
-    font-family: monospace;
-    background-image: linear-gradient(-225deg, #64cf4e 10%, #ffffff 30%);
-    inline-size: 15%;
+/* Contenedor de información del producto / propiedades */
+#container-productInfo .costo, .soldCount, .categoryInfo  {
+    font-size: 25px;
+    color: rgb(0, 0, 0);
+    inline-size: 70%;
+    margin-top: 1%;
+    margin-bottom: 2%;
     margin-left: auto;
-    margin-right: auto;
+    margin-right: 50%;
+    font-family: monospace;
+    background-color: rgb(219, 217, 216);
 }
 
-.commentProduct {
+/* Descripción del producto */
+#cnt-descInfo {
+    text-align: center;
+    margin-left: 1%;
+    margin-top: 5%;
+    margin-bottom: -13.7%;
+    border: 1px solid black;
+    box-shadow: 2px 2px 3px black;
     inline-size: 50%;
-    font-size: 23px;
+}
+
+/*Caja de comentarios*/
+.commentProduct{
+    border: 2px solid black;
+    inline-size: 70%;
+    margin-left: 17%;
+    margin-right: auto;
+}
+
+/* Comentario genérico/descripción */
+.commentDesc {
+    font-size: 20px;
+    color: rgb(226, 75, 15);
+    text-shadow: 1px 1px 2px black;
     margin-left: 10%;
-    border-radius: 50%;
-
 }
 
-.commentProduct:hover {
-    color: skyblue;
-    background: skyblue;
+/*Productos relativos*/
+.productsRel {
+    font-family: monospace;
+    border: 1px solid black;
+    background-color: rgb(255, 255, 255);
+    font-size: 23px;
+    inline-size: 45%;
+    margin-left: auto;
+    margin-right: 1%;
+    margin-top: -10%;
+    margin-bottom: 10%;
 }
 
+/*Titulo de caja de comentarios*/
+.titleComment{
+    font-size: 50px;
+    inline-size: 30%;
+    margin-left: 17%;
+    margin-right: auto;
+    margin-top: -10%;
+}
+
+/*Estrellitas*/
+#form {
+    width: 250px;
+    margin: 0 auto;
+    height: 250px;
+  }
+  
+  #form p {
+    text-align: center;
+  }
+  
+  #form label {
+    font-size: 20px;
+  }
+  
+  input[type="radio"] {
+    display: none;
+  }
+  
+  label {
+    color: grey;
+  }
+  
+  .clasificacion {
+    direction: rtl;
+    unicode-bidi: bidi-override;
+  }
+  
+  label:hover,
+  label:hover ~ label {
+    color: orange;
+  }
+  
+  input[type="radio"]:checked ~ label {
+    color: orange;
+  }
+
+#commentArea {
+    margin-left: 17%;
+    margin-top: 3%;
+    margin-right: 5%;
+    inline-size: 50%;
+}
+
+#commentArea button[type="submit"]{
+    margin-left: 20%;
+}
+
+
+/*Clasificación del usuario*/
+.clasificacion{
+ font-size: 30px;
+}
+
+/*Volver atrás*/
+.goBack{
+    font-family: Arial, Helvetica, sans-serif;
+    text-align: center;
+    border: 2px solid rgb(109, 107, 106);
+    inline-size: 20%;
+    margin-right: auto;
+    margin-left: auto;
+    margin-top: 5%;
+    font-size: 150%;
+}
+
+/*Añadir al carrito*/
+.buyPrd{
+    font-size: 30px;
+    border: 1px solid black;
+    background-color: white;
+    inline-size: 30%;
+}
