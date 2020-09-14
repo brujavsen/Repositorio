@@ -1,4 +1,3 @@
-
 //Información del producto
 fetch(PRODUCT_INFO_URL)
     .then(response => response.json())
@@ -7,23 +6,27 @@ fetch(PRODUCT_INFO_URL)
        let showProductInfo = document.getElementById("contenedorInfo");
        showProductInfo.innerHTML = `
          
-        <div id="container-productInfo">
+        <div id="container-productInfo" class"jumbotron">
 
-            <div>
-                <h2 class="title">`+ info.name +`</h2>
-            </div>
+        <ul class="list-group">
+            <li class="list-group-item d-flex justify-content-between align-items-center">
+                 <h2 class="display-4">`+ info.name +`</h2>
+            </li>
+            <li class="list-group-item d-flex justify-content-between align-items-center">
+                    <p class="costPrd">Precio:</p> <span class="badge badge-primary badge-pill">`+ info.currency + " " + info.cost +`</span>
+            </li>
 
-            <div class="costo">
-                <p>`+ info.currency + " " + info.cost +` </p>
-            </div> 
+            <li class="list-group-item d-flex justify-content-between align-items-center">
+                <p class="countPrd">Cantidad:</p> <span class="badge badge-primary badge-pill">`+ info.soldCount +`</span>                
+            </li>
 
-            <div class="soldCount">
-                <p>Cantidad: `+ info.soldCount +`</p>
-            </div>
+            <li class="list-group-item d-flex justify-content-between align-items-center">
+                <div class="lead">Categoria:</div> <span class="badge badge-primary badge-pill">`+ info.category +`</span>
+            </li>
+        </ul>
 
-            <div class="categoryInfo">Categoria: `+info.category+`</div>
 
-            <a class="buyPrd" href="./cart.html">Añadir al carrito<a>
+            <a class="buyPrd btn btn-info" href="./cart.html">Añadir al carrito<a>
 
         </div>
 
