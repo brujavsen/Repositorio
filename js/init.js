@@ -23,7 +23,7 @@ var getJSONData = function(url){
       if (response.ok) {
         return response.json();
       }else{
-        throw Error(response.statusText);
+        throw Error(response.statusText); 
       }
     })
     .then(function(response) {
@@ -41,19 +41,19 @@ var getJSONData = function(url){
 }
 
 
-
+ 
 
   if (!window.location.href.endsWith('login.html')
     && !sessionStorage.getItem('logged')) {
       window.location.href = "login.html";
   }
+  
   const signUpSession = document.getElementById("cerrarSesion")
 
- signUpSession.addEventListener('click', () =>{
+  signUpSession.addEventListener('click', () =>{
      sessionStorage.removeItem('logged', true);
      window.location.href = "./login.html";
- });
-   
+  });
 
  const headDiv = document.getElementById('userProfile');
 

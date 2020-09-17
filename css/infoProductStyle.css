@@ -1,6 +1,5 @@
 @charset "utf-8";
 
-/*Slideshow images*/
 body{
     margin: 0;
     padding: 0;
@@ -8,6 +7,11 @@ body{
     background-image: linear-gradient(-225deg, #a1a7a0 17%, #ffffff 20%);
 }
 
+.container{
+    border: 2px black;
+}
+
+/*Slideshow images*/
 .slider {
     border: 2px solid rgb(255, 255, 255);
     margin: 380px;
@@ -16,7 +20,7 @@ body{
     margin-bottom: 0;
     margin-top: 1%;
     overflow: hidden;
-    border-radius: 1px;
+    border-radius: 5px;
 }
 
 .slider, .slider-img, .img img{
@@ -67,79 +71,66 @@ body{
 .slider .right-slide{
     right: 30px;
 }
-/*Slideshow images*/
+/*Fin - Slideshow images*/
+
+
 
 /* Contenedor de información del producto */
 #container-productInfo{
-    background-color: rgb(189, 32, 32);
-    box-shadow: 4px 2px 2px gray;
-    text-align: center;
     color: rgb(80, 80, 78);
     text-shadow: 0px 1px 2px black;
     inline-size: 40%;
-    margin-top: -35%;
-    margin-left: 58%;
-    padding-bottom: 5%;
-    border-radius: 2%;
+    margin-left: auto;
+    margin-top: -36%;
 }
 
 #container-productInfo .costPrd, .countPrd, .lead {
     font-size: 20px;
     color: rgb(250, 239, 239);
     background: rgb(114, 114, 114);
-    inline-size: 30%;
+    inline-size: 25%;
     border-radius: 5px;
     box-shadow: 0px 1px 2px black;
 }
 
-/* Descripción del producto */
-#cnt-descInfo {
-    text-align: center;
-    margin-left: 1%;
-    margin-top: 5%;
-    margin-bottom: -13.7%;
-    box-shadow: 3px 2px 3px black;
-    inline-size: 50%;
-    border-radius: 5px;
-}
-
-/*Caja de comentarios*/
-.commentProduct{
-    border: 2px solid black;
-    inline-size: 40%;
-    margin-left: 2%;
+/* Añadir al carrito */
+.buyPrd{
+    font-size: 18px;
+    border: 1px solid black;
+    margin-left: 32%;
     margin-right: auto;
 }
 
-/* Comentario genérico/descripción */
-.commentDesc {
+/* Descripción del producto */
+#cnt-descInfo {
+    margin-top: 2%;
+    margin-bottom: 5%;
+    box-shadow: 3px 2px 3px black;
+    border-radius: 5px;
+    inline-size: auto;
     font-size: 20px;
-    color: rgb(226, 75, 15);
-    text-shadow: 1px 1px 2px black;
-    margin-left: 10%;
 }
 
 /*Productos relativos*/
 .productsRel {
-    font-family: monospace;
+    inline-size: 30%;
     background-color: rgb(255, 255, 255);
-    font-size: 23px;
-    inline-size: 45%;
-    margin-left: auto;
-    margin-right: 1%;
-    margin-top: -10%;
-    margin-bottom: 10%;
+    font-size: 15px;
+    text-align: center;
     box-shadow: 0px 2px 3px black;
+    float: left;
+    margin-left: 10%;
+    margin-bottom: 8%;
 }
 
-/*Titulo de caja de comentarios*/
-.titleComment{
-    font-size: 50px;
-    inline-size: 30%;
-    margin-left: 2%;
-    margin-right: auto;
-    margin-top: -38%;
+
+/*Caja de comentarios*/
+.commentProduct{
+    box-shadow: 1px 1px 2px rgb(204, 203, 203);
+    inline-size: 50%;
+    display: inline-block;
 }
+
 
 /*Estrellitas*/
 #form {
@@ -178,39 +169,29 @@ body{
     color: orange;
   }
 
+/* Area de comentarios */
 #commentArea {
-    margin-left: 50%;
-    margin-top: -22%;
     inline-size: 50%;
+    margin-top: 10%;
 }
 
 #commentArea button[type="submit"]{
     margin-left: 13%;
 }
 
-
 /*Clasificación del usuario*/
-.clasificacion{
- font-size: 30px;
+#clasificacion{
+    margin-bottom: 3%;
 }
 
 /*Volver atrás*/
 .goBack{
     font-family: Arial, Helvetica, sans-serif;
     text-align: center;
-    border: 2px solid rgb(109, 107, 106);
+    border: 1px solid rgb(109, 107, 106);
     inline-size: 20%;
     margin-right: auto;
     margin-left: auto;
     margin-top: 5%;
     font-size: 150%;
-}
-
-/* Añadir al carrito */
-.buyPrd{
-    font-size: 18px;
-    margin-top: 15%;
-    margin-bottom: -30;
-    border: 1px solid black;
-    inline-size: 30%;
 }

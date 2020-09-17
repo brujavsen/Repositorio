@@ -14,7 +14,7 @@ form.addEventListener('submit', function(event) {
     event.preventDefault();
 
 let user = Array(
-    {
+    { 
         usuario: userName.value,
         correo: userEmail.value,
         clave: userPass.value

@@ -34,64 +34,61 @@
     </div>
   </nav>
 
-  <!-- Slider Image -->
-    <div class="slider">
-      <div class="slider-img">
-        <div class="img active">
-          <img src="img/prod1.jpg">
+  <div class="container">
+    <div class="row">
+      <div class="col">
+        <!-- Slider Image -->
+        <div class="slider">
+          <div class="slider-img">
+            <div class="img active">
+              <img src="img/prod1.jpg">
+            </div>
+            <div class="img">
+              <img src="img/prod1_1.jpg">
+            </div>
+            <div class="img">
+              <img src="img/prod1_2.jpg">
+            </div>
+            <div class="img">
+              <img src="img/prod1_3.jpg">
+            </div>
+            <div class="img">
+              <img src="img/prod1_4.jpg">
+            </div>
+          </div>
+
+          <!-- Slider control -->
+          <div class="left-slide">◄</div>
+          <div class="right-slide">►</div>
+          <!-- Slider control -->
         </div>
-        <div class="img">
-          <img src="img/prod1_1.jpg">
+        <!-- Slider Image -->
+
+        <!-- Contenedor de información del producto -->
+        <div id="contenedorInfo"></div>
+        <!-- Contenedor de información del producto -->
+
+        <div id="car"></div>
+
+        <!-- Contenedor de los comentarios del producto -->
+        <h1><ins>Comentarios</ins></h1>
+        <div id="contenedorComments"></div>
+        <div id="commUsr"></div>
+        <!-- Contenedor de los comentarios del producto -->
+
+        <!-- Clasificación -->
+        <div id="commentArea">
+          <form>
+            <input type="text" id="userComment" placeholder="Ingrese su nombre"><br>
+            <textarea id="commentUsuario" name="comentario" cols="50" rows="7" placeholder="Deje su comentario" spellcheck="true"></textarea><br>
+            <input type="number" id="clasificacion" min="1" max="5" placeholder="Clasf."><br>
+            <button class="btn btn-info" onclick="createNewComment()" type="reset" id="submitComm">Enviar</button>
+          </form>
         </div>
-        <div class="img">
-          <img src="img/prod1_2.jpg">
-        </div>
-        <div class="img">
-          <img src="img/prod1_3.jpg">
-        </div>
-        <div class="img">
-          <img src="img/prod1_4.jpg">
-        </div>
+        <!-- Clasificación -->
       </div>
-
-      <!-- Slider control -->
-      <div class="left-slide"><</div>
-      <div class="right-slide">></div>
-      <!-- Slider control -->
     </div>
-    <!-- Slider Image -->
-
-    <!-- Contenedor de información del producto -->
-    <div id="contenedorInfo"></div>
-    <!-- Contenedor de información del producto -->
-
-    <div id="car"></div>
-
-    <!-- Contenedor de los comentarios del producto -->
-    <h1 class="titleComment"><ins>Comentarios</ins></h1>
-    <div id="contenedorComments"></div>
-    <!-- Contenedor de los comentarios del producto -->
-
-    <!-- Clasificación -->
-    <div id="commentArea">
-      <form>
-        <textarea id="commentUsuario" name="comentario" cols="30" rows="10" placeholder="Deje su comentario" spellcheck="true"></textarea>
-        <p class="clasificacion">
-          <input id="radio1" type="radio" name="estrellas" value="5" required><!--
-          --><label for="radio1">★</label><!--
-          --><input id="radio2" type="radio" name="estrellas" value="4"><!--
-          --><label for="radio2">★</label><!--
-          --><input id="radio3" type="radio" name="estrellas" value="3"><!--
-          --><label for="radio3">★</label><!--
-          --><input id="radio4" type="radio" name="estrellas" value="2"><!--
-          --><label for="radio4">★</label><!--
-          --><input id="radio5" type="radio" name="estrellas" value="1"><!--
-          --><label for="radio5">★</label>
-        </p>
-        <button type="submit">Enviar</button>
-      </form>
-    </div>
-    <!-- Clasificación -->
+  </div>
 
     <div class="goBack">
       <a href="./products.html">Volver a productos</a>
