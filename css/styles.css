@@ -60,7 +60,8 @@ footer p {
 }
 
 .site-header, #userProfile:hover, a:hover {
-  color: royalblue;
+  color: orange;
+  text-decoration: none;
 }
 
 .site-header a:active {
@@ -160,6 +161,7 @@ a.custom-card:hover {
   margin-bottom: 20px;
 }
 
+/* Perfil */
 #userProfile {
   color: rgb(111, 199, 71);
   white-space: nowrap;
@@ -172,6 +174,8 @@ a.custom-card:hover {
   white-space: nowrap;
 }
 
+
+/* Reloj en pantalla */
 #clock {
   background-image: url("https://www.xmple.com/wallpaper/red-gradient-pink-linear-1920x1080-c2-e9967a-db7093-a-300-f-14.svg");
   background-size: cover;

@@ -1,3 +1,4 @@
+
 //Información del producto
 fetch(PRODUCT_INFO_URL)
     .then(response => response.json())
@@ -26,7 +27,6 @@ fetch(PRODUCT_INFO_URL)
                             <div class="lead">Categoria:</div> <span class="badge badge-primary badge-pill">`+ info.category +`</span>
                         </li>
                     </ul>
-
 
                         <a class="buyPrd btn btn-info" href="./cart.html">Añadir al carrito<a>
 
@@ -93,7 +93,7 @@ fetch(PRODUCT_INFO_URL)
             `;
         }
         return htmlContentComment;
-    }
+    };
 
 //Comentarios del producto
     function showComments(commentProd){
@@ -116,12 +116,39 @@ fetch(PRODUCT_INFO_URL)
                     </div>
                 </div>
                 `
-            }
+            };
             let showComments = document.getElementById("contenedorComments");
-            showComments.innerHTML = htmlContentComment
-    }
+            showComments.innerHTML = htmlContentComment;
+    };
 
 
+//Productos relacionados
+
+function showRelatedPrd(related){
+
+    let htmlRelated = '';
+
+    for(let i=0; i < relatedProducts.length; i++){
+        let index = relatedProducts[i];
+        let relatedPrd = related[index];
+
+        htmlRelated += 
+        `
+        <div class="productsRel">
+            <a href="./product-info.html?product=`+relatedPrd.name+`">
+                <img src="` + relatedPrd.imgSrc + `" alt="` + relatedPrd.description + `" class="img-thumbnail">
+                <h3 class="mb-1">`+ relatedPrd.name +`</h3>
+                <small class="text-muted">` + relatedPrd.description +`</small><br>
+                <small class="text-muted">`+ relatedPrd.soldCount +` articulos</small><br>
+                <small class="text-muted">`+ relatedPrd.cost + " " + relatedPrd.currency +` </small>
+            </a> 
+        </div>
+        
+        `
+    };
+
+    document.getElementById('relatedProd').innerHTML = htmlRelated;
+}
 
 //Función que se ejecuta una vez que se haya lanzado el evento de
 //que el documento se encuentra cargado, es decir, se encuentran todos los
@@ -135,51 +162,44 @@ document.addEventListener("DOMContentLoaded", function(){
         showComments(infoComment);
         };
     });
+
+    //Objeto listado de información de productos
+    getJSONData(PRODUCT_INFO_URL)
+        .then(function(infoObj){
+            var infoProd = infoObj.data;
+            
+            //Objeto listado de productos
+            getJSONData(PRODUCTS_URL)
+            .then(function(resObj){
+                var listadoPrd = resObj.data;
+                console.log(infoProd);
+                console.log(listadoPrd);
+                let htmlContentProdRel = "";
+                for(let i=0; i < infoProd.relatedProducts.length; i++){
+                    let listarProdRel = listadoPrd[infoProd.relatedProducts[i]];
+
+                    htmlContentProdRel += `
+                    
+                    <div class="productsRel">
+                        <a href="./product-info.html?product=`+listarProdRel.name+`">
+                            <img src="` + listarProdRel.imgSrc + `" alt="` + listarProdRel.description + `" class="img-thumbnail">
+                            <h3 class="mb-1">`+ listarProdRel.name +`</h3>
+                            <small class="text-muted">` + listarProdRel.description +`</small><br>
+                            <small class="text-muted">`+ listarProdRel.soldCount +` articulos</small><br>
+                            <small class="text-muted">`+ listarProdRel.cost + " " + listarProdRel.currency +` </small>
+                        </a> 
+                    </div>
+                    
+                    `
+                    
+                };
+
+                document.getElementById('relatedProd').innerHTML = htmlContentProdRel;
+                
+            });
+        });
+   
 }); 
-
-
-
-//Productos relacionados
-fetch(PRODUCTS_URL)
-    .then(response => response.json())
-    .then(relPrd => {
-
-        for(let i=0; i < relPrd.length; i++){
-            var relProd = relPrd[3]
-        }
-
-        //muestra en pantalla la información del producto
-        var showRelPrd = document.getElementById('car');
-        showRelPrd.innerHTML = `
-        <p class="display-4">Productos de relevancia:</p>
-        <div class="productsRel">
-            <a href="./product-info.html?`+relProd.name+`">
-                <img src="` + relProd.imgSrc + `" alt="` + relProd.description + `" class="img-thumbnail">
-                <h3 class="mb-1">`+ relProd.name +`</h3>
-                <small class="text-muted">` + relProd.description +`</small><br>
-                <small class="text-muted">`+ relProd.soldCount +` articulos</small><br>
-                <small class="text-muted">`+ relProd.cost + " " + relProd.currency +` </small>
-            </a> 
-        </div>
-        `
-        for(let i=0; i < relPrd.length; i++){
-            var relProd = relPrd[1]
-        }
-
-        //muestra en pantalla la información del producto
-        var showRelPrd = document.getElementById('car');
-        showRelPrd.innerHTML += `
-        <div class="productsRel">
-            <a href="./product-info.html?`+relProd.name+`">
-                <img src="` + relProd.imgSrc + `" alt="` + relProd.description + `" class="img-thumbnail">
-                <h3 class="mb-1">`+ relProd.name +`</h3>
-                <small class="text-muted">` + relProd.description +`</small><br>
-                <small class="text-muted">`+ relProd.soldCount +` articulos</small><br>
-                <small class="text-muted">`+ relProd.cost + " " + relProd.currency +` </small>
-            </a> 
-        </div>
-        `
-    });
 
 
 //Hora/fecha local
@@ -209,7 +229,7 @@ fetch(PRODUCTS_URL)
     let commentUser = document.getElementById('commUsr');
 
     function createNewComment(){
-
+  
         //Datos ingresados por el usuario
         function commentUsuario(nombre, comentario, estrellitas, fechaActual){
             this.nombre=nombre;
@@ -233,7 +253,7 @@ fetch(PRODUCTS_URL)
 //Guarda nuevo comentario en array
     var newCommentary = [];
 
-//Muestra comentario en pantalla
+//Selección de estrellas
 
     function newStarComment(starCount){
 
@@ -246,6 +266,7 @@ fetch(PRODUCTS_URL)
         return commUser;
     }
 
+//Muestra comentario en pantalla
     function showComentary(){
         newCommentary.push(nuevoComentario);
         commentUser.innerHTML += `

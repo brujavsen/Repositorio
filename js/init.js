@@ -41,53 +41,57 @@ var getJSONData = function(url){
 }
 
 
- 
+//Register y login
 
   if (!window.location.href.endsWith('login.html')
     && !sessionStorage.getItem('logged')) {
       window.location.href = "login.html";
   }
   
+  //Cerrar sesión
   const signUpSession = document.getElementById("cerrarSesion")
 
   signUpSession.addEventListener('click', () =>{
      sessionStorage.removeItem('logged', true);
      window.location.href = "./login.html";
   });
+  //Cerrar sesión
 
- const headDiv = document.getElementById('userProfile');
+  const headDiv = document.getElementById('userProfile');
 
- let nameUser = JSON.parse(localStorage.getItem('users'));
+  let nameUser = JSON.parse(localStorage.getItem('users'));
 
 
- if(nameUser != null){
+  if(nameUser != null){
     headDiv.innerHTML = nameUser[0].usuario;
- }
-
-function clockOnTime(){
-  var today = new Date();
-  var hr = today.getHours();
-  var min = today.getMinutes();
-  var sec = today.getSeconds();
-  ap = ( hr < 12) ? "<span>AM</span>" : "<span>PM</span>";
-  hr = ( hr == 0) ? 12 : hr;
-  hr = ( hr > 12) ? hr - 12 : hr;
-  hr = checkTime(hr);
-  min = checkTime(min);
-  sec = checkTime(sec);
-  document.getElementById('clock').innerHTML = hr + ":" + min + ":" + sec + " " + ap;
-  var time = setTimeout(()=>{clockOnTime()}, 500);
-  setInterval(() => {
-    clockOnTime
-  }, 1000);
-}
-
-function checkTime(i) {
-  if (i < 10){
-    i = "0" + i;
   }
-  return i;
-}
+
+
+//Reloj en pantalla
+  function clockOnTime(){
+    var today = new Date();
+    var hr = today.getHours();
+    var min = today.getMinutes();
+    var sec = today.getSeconds();
+    ap = ( hr < 12) ? "<span>AM</span>" : "<span>PM</span>";
+    hr = ( hr == 0) ? 12 : hr;
+    hr = ( hr > 12) ? hr - 12 : hr;
+    hr = checkTime(hr);
+    min = checkTime(min);
+    sec = checkTime(sec);
+    document.getElementById('clock').innerHTML = hr + ":" + min + ":" + sec + " " + ap;
+    var time = setTimeout(()=>{clockOnTime()}, 500);
+    setInterval(() => {
+      clockOnTime
+    }, 1000);
+  }
+
+  function checkTime(i) {
+    if (i < 10){
+      i = "0" + i;
+    }
+    return i;
+  }
 //Función que se ejecuta una vez que se haya lanzado el evento de
 //que el documento se encuentra cargado, es decir, se encuentran todos los
 //elementos HTML presentes.
