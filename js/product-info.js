@@ -10,7 +10,7 @@ fetch(PRODUCT_INFO_URL)
             <div class="row">
                 <div class="col">
                     <div id="container-productInfo" class"jumbotron">
-
+ 
                     <ul class="list-group">
                         <li class="list-group-item d-flex justify-content-between align-items-center">
                             <h2 class="display-4">`+ info.name +`</h2>
@@ -122,33 +122,30 @@ fetch(PRODUCT_INFO_URL)
     };
 
 
-//Productos relacionados
+function showProductRel(dataRel, dataList){
 
-function showRelatedPrd(related){
+    let htmlContentProdRel = "";
+        for(let i=0; i < dataRel.relatedProducts.length; i++){
+            let listarProdRel = dataList[dataRel.relatedProducts[i]];
 
-    let htmlRelated = '';
+            htmlContentProdRel += 
+            `
+            
+            <div class="productsRel">
+                <a href="./product-info.html?product=`+listarProdRel.name+`">
+                    <img src="` + listarProdRel.imgSrc + `" alt="` + listarProdRel.description + `" class="img-thumbnail">
+                    <h3 class="mb-1">`+ listarProdRel.name +`</h3>
+                    <small class="text-muted">` + listarProdRel.description +`</small><br>
+                    <small class="text-muted">`+ listarProdRel.soldCount +` articulos</small><br>
+                    <small class="text-muted">`+ listarProdRel.cost + " " + listarProdRel.currency +` </small>
+                </a> 
+            </div>
+            
+            `
+        };
 
-    for(let i=0; i < relatedProducts.length; i++){
-        let index = relatedProducts[i];
-        let relatedPrd = related[index];
-
-        htmlRelated += 
-        `
-        <div class="productsRel">
-            <a href="./product-info.html?product=`+relatedPrd.name+`">
-                <img src="` + relatedPrd.imgSrc + `" alt="` + relatedPrd.description + `" class="img-thumbnail">
-                <h3 class="mb-1">`+ relatedPrd.name +`</h3>
-                <small class="text-muted">` + relatedPrd.description +`</small><br>
-                <small class="text-muted">`+ relatedPrd.soldCount +` articulos</small><br>
-                <small class="text-muted">`+ relatedPrd.cost + " " + relatedPrd.currency +` </small>
-            </a> 
-        </div>
-        
-        `
-    };
-
-    document.getElementById('relatedProd').innerHTML = htmlRelated;
-}
+        document.getElementById('relatedProd').innerHTML = htmlContentProdRel;
+};
 
 //Función que se ejecuta una vez que se haya lanzado el evento de
 //que el documento se encuentra cargado, es decir, se encuentran todos los
@@ -174,27 +171,9 @@ document.addEventListener("DOMContentLoaded", function(){
                 var listadoPrd = resObj.data;
                 console.log(infoProd);
                 console.log(listadoPrd);
-                let htmlContentProdRel = "";
-                for(let i=0; i < infoProd.relatedProducts.length; i++){
-                    let listarProdRel = listadoPrd[infoProd.relatedProducts[i]];
 
-                    htmlContentProdRel += `
-                    
-                    <div class="productsRel">
-                        <a href="./product-info.html?product=`+listarProdRel.name+`">
-                            <img src="` + listarProdRel.imgSrc + `" alt="` + listarProdRel.description + `" class="img-thumbnail">
-                            <h3 class="mb-1">`+ listarProdRel.name +`</h3>
-                            <small class="text-muted">` + listarProdRel.description +`</small><br>
-                            <small class="text-muted">`+ listarProdRel.soldCount +` articulos</small><br>
-                            <small class="text-muted">`+ listarProdRel.cost + " " + listarProdRel.currency +` </small>
-                        </a> 
-                    </div>
-                    
-                    `
-                    
-                };
-
-                document.getElementById('relatedProd').innerHTML = htmlContentProdRel;
+                //Muestra productos relacionados
+                showProductRel(infoProd, listadoPrd);
                 
             });
         });

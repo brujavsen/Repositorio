@@ -43,10 +43,14 @@ function showSubtotal(data){
 
     //Recorro el objeto
     for(let index in data){
-        suma += data[index].unitCost * data[index].count; //Multiplico sus propiedades
+        if(data[index].currency === "USD"){
+            suma += data[index].unitCost * data[index].count * 40;
+        }else if(data[index].currency === "UYU"){
+            suma += data[index].unitCost * data[index].count;
+        }
     };
     
-    subtotalCnt.innerHTML = "Subtotal: " + suma;
+    subtotalCnt.innerHTML = "Subtotal: " + suma + " UYU";
 
 };
 
@@ -60,7 +64,7 @@ document.addEventListener("DOMContentLoaded", function(e){
         if(resObj.status === "ok"){
             var infoCart = resObj.data;
             showInfoCart(infoCart.articles);
-            showSubtotal(infoCart.articles)
+            showSubtotal(infoCart.articles);
         };
     });
 }); 
