@@ -17,51 +17,40 @@
     margin-left: 70px;
 }
 
-.title{
-    inline-size: 50%;
+.namePrd{
     margin-left: auto;
     margin-right: auto;
 }
 
 .showCnt {
-    box-shadow: 1px 1px 1px 1px gray;
-    inline-size: 90%;
+    inline-size: 80%;
     margin-left: auto;
     margin-right: auto;
     text-align: right;
 }
 
 .imgPrd img {
-    max-width: 20%;
+    max-width: 100%;
     display: block;
-    margin-top: 1%;
-}
-
-.namePrd {
-    margin-top: 2%;
-    text-align: left;
-    padding-bottom: 0%;
+    margin-top: 3px;
+    margin-bottom: 2px;
 }
 
 .priceCnt {
-    position: relative;
-    top: -200px;
-    right: -950px;
     padding-bottom: 10px;
     text-align: center;
-    box-shadow: 1px 2px 3px orange;
     inline-size: 20%;
 }
 
-.dropCnt {
-    position: relative;
-    right: 1100px;
-    bottom: 90px;
+.amountPrd input[type="number"] {
+    inline-size: 40%;
+    margin-top: 3px;
 }
 
 #subtotal {
-    border: 2px solid gray;
-    margin-left: 75%;
-    font-size: 200%;
-    inline-size: 25%;
+    border-radius: 10px;
+    text-align: center;
+    inline-size: 20%;
+    margin-left: 70%;
+    font-size: 150%;
 }

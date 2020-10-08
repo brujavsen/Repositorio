@@ -11,22 +11,21 @@ function showInfoCart(data){
 
         htmlContentToAppend += 
         `            
-            <div class="showCnt">
-                <div class="imgPrd">
-                    <img src="`+ info.src +`" class="rounded">
-                </div>
-                <div class="namePrd">
-                    <h2>`+ info.name +`</h2>
-                </div>
-                <div class="priceCnt">
-                    <p>Precio:</p>
-                    <h4>$`+ info.unitCost + " " + info.currency +`</h4>
-                </div>
-                <div class="amountPrd">
-                    <div class="dropCnt">
-                        <button class="btn btn-warning" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                           Cantidad:  `+ info.count +`
-                        </button>
+            <div class="showCnt container shadow-lg p-3 mb-1 bg-white rounded">
+                <div class="row">
+                    <div class="col imgPrd">
+                        <img src="`+ info.src +`" class="rounded">
+                    </div>
+                    <div class="col font-weight-bold namePrd">
+                        <h2>`+ info.name +`</h2>
+                    </div>
+                    <div class="col priceCnt">
+                        <p>Precio:</p>
+                        <h4>$`+ info.unitCost + " " + info.currency +`</h4>
+                    </div>
+                    <div class="col amountPrd">
+                        <label for="cantUser">Cantidad:</label>
+                        <input type="number" class="cantUser" id="input${i}" value="1">
                     </div>
                 </div>
             </div>
@@ -34,25 +33,26 @@ function showInfoCart(data){
     };
     
     container_info.innerHTML = htmlContentToAppend;
+
+    for(let i=0; i < data.length; i++){
+        document.getElementById("input"+ i).addEventListener('change', function showSubtotal(){
+    
+            var suma = 0;
+            //Recorro el objeto
+            for(let index in data){
+                cantidad = document.getElementsByClassName('cantUser')[index].value;
+                if(data[index].currency === "USD"){
+                    suma += data[index].unitCost * 40 * cantidad ;
+                }else if(data[index].currency === "UYU"){
+                    suma += data[index].unitCost * cantidad;
+                }
+            };
+            subtotalCnt.innerHTML = "Subtotal: $" + suma + " UYU";
+        })
+    }
 };
 
 
-function showSubtotal(data){
-    
-    var suma = 0;
-
-    //Recorro el objeto
-    for(let index in data){
-        if(data[index].currency === "USD"){
-            suma += data[index].unitCost * data[index].count * 40;
-        }else if(data[index].currency === "UYU"){
-            suma += data[index].unitCost * data[index].count;
-        }
-    };
-    
-    subtotalCnt.innerHTML = "Subtotal: " + suma + " UYU";
-
-};
 
 
 //Función que se ejecuta una vez que se haya lanzado el evento de
@@ -64,7 +64,7 @@ document.addEventListener("DOMContentLoaded", function(e){
         if(resObj.status === "ok"){
             var infoCart = resObj.data;
             showInfoCart(infoCart.articles);
-            showSubtotal(infoCart.articles);
+
         };
     });
 }); 
