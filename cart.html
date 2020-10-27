@@ -2,55 +2,180 @@
 <!-- saved from url=(0049)https://getbootstrap.com/docs/4.3/examples/album/ -->
 <html lang="en">
 
-<head>
-  <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-  <meta name="description" content="">
-  <title>eMercado - Todo lo que busques está aquí</title>
+  <head>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <meta name="description" content="">
+    <title>eMercado - Todo lo que busques está aquí</title>
 
-  <link rel="canonical" href="https://getbootstrap.com/docs/4.3/examples/album/">
-  <link href="https://fonts.googleapis.com/css?family=Raleway:300,300i,400,400i,700,700i,900,900i" rel="stylesheet">
-  <script src="https://kit.fontawesome.com/806392c754.js" crossorigin="anonymous"></script>
-  <link href="css/bootstrap.min.css" rel="stylesheet">
-  <link href="css/styles.css" rel="stylesheet">
-  <link href="css/dropzone.css" rel="stylesheet">
-  <link rel="stylesheet" href="./css/cartStyle.css">
-</head>
- 
-<body onload="clockOnTime()"> 
-  <nav class="site-header sticky-top py-1 bg-dark">
-    <div class="container d-flex flex-column flex-md-row justify-content-between">
-      <a class="py-2 d-none d-md-inline-block" href="index.html">Inicio <i class="fas fa-home"></i></a>
-      <a class="py-2 d-none d-md-inline-block" href="categories.html">Categorías <i class="fas fa-clipboard-list"></i></a>
-      <a class="py-2 d-none d-md-inline-block" href="products.html">Productos <i class="fas fa-shopping-basket"></i></a>
-      <a class="py-2 d-none d-md-inline-block" href="sell.html">Vender <i class="fas fa-box"></i></a>
-      <a class="btn dropdown-toggle" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" id="userProfile"></a>
-      <div class="dropdown-menu active btn-success" aria-labelledby="dropdownMenuLink">
-        <a class="dropdown-item" href="cart.html">Mi carrito<i class="fas fa-shopping-cart"></i></a>
-        <a class="dropdown-item" href="my-profile.html">Mi perfil <i class="far fa-user"></i></a>
-        <div class="dropdown-divider"></div>
-        <a class="dropdown-item active btn-light" href="" id="cerrarSesion">Cerrar Sesión <i class="fas fa-sign-in-alt" id="signOff"></i></a>
+    <link rel="canonical" href="https://getbootstrap.com/docs/4.3/examples/album/">
+    <link href="https://fonts.googleapis.com/css?family=Raleway:300,300i,400,400i,700,700i,900,900i" rel="stylesheet">
+    <script src="https://kit.fontawesome.com/806392c754.js" crossorigin="anonymous"></script>
+    <link href="css/bootstrap.min.css" rel="stylesheet">
+    <link href="css/styles.css" rel="stylesheet">
+    <link href="css/dropzone.css" rel="stylesheet">
+    <link rel="stylesheet" href="./css/cartStyle.css">
+  </head>
+  
+  <body onload="clockOnTime()"> 
+    <nav class="site-header sticky-top py-1 bg-dark">
+      <div class="container d-flex flex-column flex-md-row justify-content-between">
+        <a class="py-2 d-none d-md-inline-block" href="index.html">Inicio <i class="fas fa-home"></i></a>
+        <a class="py-2 d-none d-md-inline-block" href="categories.html">Categorías <i class="fas fa-clipboard-list"></i></a>
+        <a class="py-2 d-none d-md-inline-block" href="products.html">Productos <i class="fas fa-shopping-basket"></i></a>
+        <a class="py-2 d-none d-md-inline-block" href="sell.html">Vender <i class="fas fa-box"></i></a>
+        <a class="btn dropdown-toggle" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" id="userProfile"></a>
+        <div class="dropdown-menu active btn-success" aria-labelledby="dropdownMenuLink">
+          <a class="dropdown-item" href="cart.html">Mi carrito<i class="fas fa-shopping-cart"></i></a>
+          <a class="dropdown-item" href="my-profile.html">Mi perfil <i class="far fa-user"></i></a>
+          <div class="dropdown-divider"></div>
+          <a class="dropdown-item active btn-light" href="" id="cerrarSesion">Cerrar Sesión <i class="fas fa-sign-in-alt" id="signOff"></i></a>
+        </div>
+        <div id="clock" class="card bg-info text-white"></div>
       </div>
-      <div id="clock" class="card bg-info text-white"></div>
+    </nav>
+    <h1 class="myCart display-4">Mi Carrito</h1>
+    <div id="cntCart"></div>
+
+    <form action="msgBuy.html" method="GET" class="container" id="formCart">
+        <!-- Método de envío -->
+        <h2>Ingrese sus datos</h2>
+        <div class="form-row">
+          <div class="form-group col-md-2">
+            <label for="inputAddress1">Calle</label>
+            <input type="text" class="form-control" id="inputAddress1">
+            <span id="errStreet" class="text-muted"></span>
+          </div>
+        </div>
+        <div class="form-row">
+          <div class="form-group col-md-2">
+            <label for="inputAddress2">Esquina</label>
+            <input type="text" class="form-control" id="inputAddress2">
+            <span id="errCorner" class="text-muted"></span>
+          </div>
+          <div class="form-group col-md-2">
+            <label for="inputAddress3">Número</label>
+            <input type="text" class="form-control" id="inputAddress3">
+            <span id="errNumber" class="text-muted"></span>
+          </div>
+        </div>
+        <div id="alertFields"></div>
+        
+      <hr>
+
+        <h2>Tipo de envío</h2>
+        <div class="form-row">
+          <div id="formShippType" class="form-group col-md-3">
+            <input type="radio" name="optionType" id="inputPremium" class="inputType" value="premium" required>
+            <label for="premium">Premium (2-5 días)</label><br>
+            <input type="radio" name="optionType" id="inputExpress" class="inputType" value="express">
+            <label for="express">Express (5-8 días)</label><br>
+            <input type="radio" name="optionType" id="inputStandard" class="inputType" value="standard">
+            <label for="standard">Standard (12 a 15 días)</label>
+          </div>
+        </div>
+        <!-- Fin método de envío -->
+        <div id="errShippType"></div>
+
+      <hr>
+
+        <!-- Subtotal, coste de envío, total -->
+        <table class="table container shadow-lg p-3 mb-1 bg-white">
+        <h2>Costos</h2> 
+          <tbody>
+            <tr>
+              <th scope="row"><p class="badge font-weight-bold">Subtotal:</p></th><br>
+              <td><span id="subtotal" class="inputsRes text-muted"></span></td>
+            </tr>
+            <tr>
+              <th scope="row"><p class="badge font-weight-bold">Costo de envío:</p></th>
+              <td><span id="costShip" class="inputsRes text-muted"></span></td>
+            </tr>
+            <tr>
+              <th scope="row"><p class="badge badge-danger text-wrap font-weight-bold">Total:</p></th>
+              <td><span id="total" class="inputsRes"></span></td>
+            </tr>
+          </tbody>
+        </table>
+        <!-- Fin subtotal... -->
+
+      <hr>
+
+        <!-- Button formas de pago -->
+        <h2>Formas de Pago</h2>
+        <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#payModal">
+          Seleccionar
+        </button>
+        <div id="alertPay"></div>
+
+        <!-- Forma de pago -->
+        <div class="modal fade" id="payModal" tabindex="-1" role="dialog" aria-labelledby="payModalOptions" aria-hidden="true">
+          <div class="modal-dialog" role="document">
+            <div class="modal-content">
+              <div class="modal-header">
+                <h5 class="modal-title" id="selectOptionModal">Elija una opción</h5>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                  <span aria-hidden="true">&times;</span>
+                </button>
+              </div>
+              <div class="modal-body">
+                <input type="radio" name="modalOption" id="cardInput" value="credCard" checked>
+                <label for="cardInput">Tarjeta de crédito</label>
+
+                <hr>
+
+                <div id="optionCard">
+                  <i class="fas fa-credit-card"></i>
+                  <input type="text" name="opCard" id="numCardInput" class="inputCardOption" placeholder="Número de tarjeta">
+                  <div id="errCardNum"></div>
+                  <i class="fas fa-key"></i>
+                  <input type="text" name="opCard" id="cvvCardInput" class="inputCardOption" placeholder="CVV"><br>
+                  <div id="errCvvCard"></div>
+                  <i class="far fa-calendar"></i>
+                  <input type="date" name="opCard" id="cardExpInput" class="inputCardOption" placeholder="MM/AA">
+                  <div id="errExpCard"></div> 
+                </div>
+
+                <hr>
+
+                <input type="radio" name="modalOption" id="transferInput" value="transfWire">
+                <label for="transferInput">Transferencia bancaria</label>
+
+                <hr>
+
+                <div id="optionTransfer">
+                  <label for="numAccount">Ingrese su número de cuenta</label><br>
+                  <i class="fas fa-wallet"></i>
+                  <input type="text" name="numberAccount" id="numAccount" class="inputTransfOption" placeholder="Número de cuenta" disabled>
+                </div>
+              </div>
+              <div class="modal-footer">
+                <button type="button" class="btn btn-secondary" data-dismiss="modal">Cerrar</button>
+              </div>
+            </div>
+          </div>
+        </div>
+        <!-- Fin Forma de pago -->
+
+      <hr>
+
+        <button type="submit" class="btn btn-success" id="btnPay">Proceder a pagar</button>
+        
+    </form>
+
+    <div id="spinner-wrapper">
+      <div class="lds-ring">
+        <div></div>
+        <div></div>
+        <div></div>
+        <div></div>
+      </div>
     </div>
-  </nav>
-  <h1 class="myCart display-4">Mi Carrito</h1>
-  <div id="cntCart"></div>
-  <div id="subtotal" class="btn-danger font-weight-bold"></div>
-  <button type="button" class="btn btn-success">Proceder a pagar</button>
-  <div id="spinner-wrapper">
-    <div class="lds-ring">
-      <div></div>
-      <div></div>
-      <div></div>
-      <div></div>
-    </div>
-  </div>
-  <script src="js/jquery-3.4.1.min.js"></script>
-  <script src="js/bootstrap.bundle.min.js"></script>
-  <script src="js/dropzone.js"></script>
-  <script src="js/init.js"></script>
-  <script src="js/cart.js"></script>
-</body>
+    <script src="js/jquery-3.4.1.min.js"></script>
+    <script src="js/bootstrap.bundle.min.js"></script>
+    <script src="js/dropzone.js"></script>
+    <script src="js/init.js"></script>
+    <script src="js/cart.js"></script>
+  </body>
 
 </html>
