@@ -15,32 +15,17 @@ function showProductList(products){
             ((maxCount == undefined) || (maxCount != undefined && parseInt(category.cost) <= maxCount))){
 
             htmlContentToAppend += `
-            
-            <a href="./product-info.html?product=`+ category.name +`">
-                <div class="list-group-item list-group-item-action">
-                    <div class="row">
-                        <div class="col-3">
-                            <img src="` + category.imgSrc + `" alt="` + category.description + `" class="img-thumbnail">
-                        </div>
-                        <div class="col">
-                            <div class="d-flex w-100 justify-content-between">
-                                <h3 class="mb-1">`+ category.name +`</h4>
-                            </div>
-                            <div class="d-flex w-100 justify-content-between">
-                                <small class="text-muted">` + category.description +`</small>
-                            </div>
-                            <div class="d-flex w-100 justify-content-between">
-                                <small class="text-muted">`+ category.soldCount +` articulos</small>
-                            </div>
-                            <div class="d-flex w-100 justify-content-between">
-                                <small class="text-muted">`+ category.cost + " " + category.currency +` </small>
-                            </div> 
-                        </div> 
+                <a href="./product-info.html?product=`+ category.name +`" class="card mb-4 shadow-sm custom-card">
+                    <img class="bd-placeholder-img card-img-top"  src="` + category.imgSrc + `">
+                    <h3 class="m-3">`+ category.name +`</h3>
+                    <div class="card-body">
+                        <p class="card-text">` + category.description +`</p>
+                        <small class="text-muted">`+ category.soldCount +` articulos</small>
+                        <small class="text-muted">`+ category.cost + " " + category.currency +` </small>
                     </div>
-                </div> 
-            </a>
+                </a>
             `
-            }
+        }
         document.getElementById("categoria").innerHTML = htmlContentToAppend;
     }  
 }  
@@ -70,37 +55,23 @@ document.addEventListener("DOMContentLoaded", function (e) {
             let nombre = productoArr.name.toLowerCase();
             if(nombre.indexOf(texto) !== -1){
                 result.innerHTML += `
-                <a href="./product-info.html?nameProduct=`+ productoArr.name +`">
-                    <div id="categoria">
-                        <div class="list-group-item list-group-item-action">
-                            <div class="row">
-                                <div class="col-3">
-                                    <img src="` + productoArr.imgSrc + `" alt="` + productoArr.description + `" class="img-thumbnail">
-                                </div>
-                                <div class="col">
-                                <div class="d-flex w-100 justify-content-between">
-                                    <h3 class="mb-1">`+ productoArr.name +`</h4>
-                                </div>
-                                <div class="d-flex w-100 justify-content-between">
-                                    <small class="text-muted">` + productoArr.description +`</small>
-                                </div>
-                                <div class="d-flex w-100 justify-content-between">
-                                    <small class="text-muted">`+ productoArr.soldCount +` articulos</small>
-                                </div>
-                                <div class="d-flex w-100 justify-content-between">
-                                    <small class="text-muted">`+ productoArr.cost + " " + productoArr.currency +` </small>
-                                </div> 
-                            </div>
+                    <a href="./product-info.html?product=`+ category.name +`" class="card mb-4 shadow-sm custom-card">
+                        <img class="bd-placeholder-img card-img-top"  src="` + category.imgSrc + `">
+                        <h3 class="m-3">`+ category.name +`</h3>
+                        <div class="card-body">
+                            <p class="card-text">` + category.description +`</p>
+                            <small class="text-muted">`+ category.soldCount +` articulos</small>
+                            <small class="text-muted">`+ category.cost + " " + category.currency +` </small>
                         </div>
-                    </div>
-                </a>`;
+                    </a>
+                `;
             }
-        }
+        };
 
         if(result.innerHTML === ''){
             result.innerHTML += `<p>No se encontró el producto</p>`
         }
-    }
+    };
 
     boton_srch.addEventListener('click', filtrado)
     search_bar.addEventListener('keyup', filtrado)
@@ -179,7 +150,7 @@ document.addEventListener("DOMContentLoaded", function (e) {
 
         showProductList(productsArray);
     });
-    showProductList(productsArray)
+    showProductList(productsArray);
 };
 hideSpinner();
 });

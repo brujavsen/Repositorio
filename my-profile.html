@@ -50,13 +50,28 @@
       <div id="clock" class="card bg-info text-white"></div>
     </div>
   </nav>
-  <div class="container p-5">
-    <div class="alert alert-danger" role="alert" style="position: relative; width:auto; top: 0;">
-      <h4 class="alert-heading">¡A trabajar! :)</h4>
-      <p>Esta sección corresponde a: Entrega 7 (Fecha de entrega: 8/11/202020) -> Punto 1 y 2.</p>
-      <hr>
-      <p class="mb-0">Para saber qué debes hacer, fijate en la actividad en CREA correspondiente a esta entrega.</p>
-    </div>
+  <div class="container">
+    <form action="#" id="formProfile">
+      <div class="form-group">
+        <div class="form-row">
+          <div class="col-md-5 mb-1">
+            <label for="nameProfile">Nombre</label>
+            <input type="text" id="nameProfile" class="form-control" value="">
+            <label for="lastNameProfile">Apellido</label>
+            <input type="text" id="lastNameProfile" class="form-control" value="">
+            <label for="ageProfile">Edad</label>
+            <input type="text" id="ageProfile" class="form-control" value="">
+          </div>
+          <div class="col-md-5 mb-3">
+            <label for="emailProfile">Correo eléctronico</label>
+            <input type="email" id="emailProfile" class="form-control" value="">
+            <label for="phoneProfile">Número de contacto</label>
+            <input type="text" id="phoneProfile" class="form-control" value="">
+          </div>
+        </div>
+      </div>
+      <button class="btn btn-primary" name="change" id="changeInfoUser">Cambiar</button><br>
+    </form>
   </div>
   <footer class="text-muted bg-light">
     <div class="container">

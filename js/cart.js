@@ -5,21 +5,18 @@ const container_info = document.getElementById('cntCart');
 const subtotalCnt = document.getElementById('subtotal');
 const costShipCnt = document.getElementById('costShip');
 const totalCnt = document.getElementById('total');
-const inputStreet = document.getElementById('inputAddress1');
-const inputCorner = document.getElementById('inputAddress2');
-const inputNumber = document.getElementById('inputAddress3');
-const formType = document.getElementById('formShippType');
-const PremiumInput = document.getElementById('inputPremium');
-const ExpressInput = document.getElementById('inputExpress');
-const StandardInput = document.getElementById('inputStandard');
-const inputCard = document.getElementById('cardInput');
-const inputTransfer = document.getElementById('transferInput');
-const optionCardCnt = document.getElementById('optionCard');
-const optionTransferCnt = document.getElementById('optionTransfer');
-const modalData = document.getElementById('saveDataModal');
-const numberCard = document.getElementById('numCardInput');
-const cvvCard = document.getElementById('cvvCardInput');
-const numberAccount = document.getElementById('numAccount');
+let inputStreet = document.getElementById('inputAddress1');
+let inputCorner = document.getElementById('inputAddress2');
+let inputNumber = document.getElementById('inputAddress3');
+let PremiumInput = document.getElementById('inputPremium');
+let ExpressInput = document.getElementById('inputExpress');
+let StandardInput = document.getElementById('inputStandard');
+let inputCard = document.getElementById('cardInput');
+let inputTransfer = document.getElementById('transferInput');
+let numberCard = document.getElementById('numCardInput');
+let cvvCard = document.getElementById('cvvCardInput');
+let expirCard = document.getElementById('cardExpInput');
+let numberAccount = document.getElementById('numAccount');
 var subtotal = [];
 let total = [];
 let converUSDaUY = 40;
@@ -164,25 +161,77 @@ inputTransfer.addEventListener('change', function () {
     expirCard.disabled = true;
 });
 
+function validationRegExp(){
+    var text = RegExp(/[a-zA-Zá-ü0-9]{2,15}$/)
+    var num = RegExp(/^[0-9]{2,5}$/)
+    var numCard = RegExp(/^[0-9]{15}$/)
+    var numCvv = RegExp(/^[0-9]{3}$/)
+    let errorStreet = document.getElementById('errStreet');
+    let errorCorner = document.getElementById('errCorner');
+    let errorNumber = document.getElementById('errNumber');
+    let numberErrCard = document.getElementById('errCardNum');
+    let cvvErrCard = document.getElementById('errCvvCard');
 
+    inputStreet.addEventListener('keyup', () => {
+        if (!text.test(inputStreet.value) || inputStreet.value > 20) {
+            errorStreet.innerHTML = `
+                <span style="color:red">Error</span> datos inválidos
+                `
+        } else {
+            errorStreet.innerHTML = ``
+        }
+    });
+
+    inputCorner.addEventListener('keyup', () => {
+        if (!text.test(inputCorner.value) || inputCorner.value > 20) {
+            errorCorner.innerHTML = `
+                <span style="color:red">Error</span> datos inválidos
+                `
+        } else {
+            errorCorner.innerHTML = ``
+        }
+    });
+
+    inputNumber.addEventListener('keyup', () => {
+        if (!num.test(inputNumber.value)) {
+            errorNumber.innerHTML = `
+                <span style="color:red">Error</span> datos inválidos
+                `
+        } else {
+            errorNumber.innerHTML = ``
+        }
+    });
+
+    numberCard.addEventListener('keyup', () => {
+        if (!numCard.test(numberCard.value)) {
+            numberErrCard.innerHTML = `
+                <span style="color:red">Error</span> datos inválidos
+                `
+        } else {
+            numberErrCard.innerHTML = ``
+        }
+    });
+
+    cvvCard.addEventListener('keyup', () => {
+        if (!numCvv.test(cvvCard.value)) {
+            cvvErrCard.innerHTML = `
+                <span style="color:red">Error</span> datos inválidos
+                `
+        } else {
+            cvvErrCard.innerHTML = ``
+        }
+    });
+
+}
 //Validación para compra
 document.addEventListener('DOMContentLoaded', () => {
+    validationRegExp();
 
-    function validateFields() {
+    formAction.addEventListener('submit', (e) => {
+        let existErr = false;
 
-        var text = RegExp(/[a-zA-Z0-9]{5,15}$/)
-        var num = RegExp(/^[0-9]{5}$/)
-        let street = inputStreet;
-        let corner = inputCorner;
-        let number = inputNumber;
-        let errorStreet = document.getElementById('errStreet');
-        let errorCorner = document.getElementById('errCorner');
-        let errorNumber = document.getElementById('errNumber');
-        
-
-        btnSubForm.addEventListener('click', ()=>{
-            if (street.value === "" || corner.value === "" || number === "") {
-                document.getElementById('alertFields').innerHTML = `
+        if (inputStreet.value === "" || inputCorner.value === "" || inputNumber.value === "") {
+            document.getElementById('alertFields').innerHTML = `
                 <div class="alert alert-danger alert-dismissible fade show" role="alert">
                     <strong>Por favor.</strong> Rellene todos los campos para continuar.
                     <button type="button" class="close" data-dismiss="alert" aria-label="Close">
@@ -190,82 +239,56 @@ document.addEventListener('DOMContentLoaded', () => {
                     </button>
                 </div>
                 `
-            }
-        });
+            existErr = true;
+        }
 
-        street.addEventListener('keyup', () => {
-            if (!text.test(street.value) || street.length > 20) {
-                errorStreet.innerHTML = `
-                <span style="color:red">Error</span> datos inválidos
-                `
-                return false;
-            } else {
-                errorStreet.innerHTML = ``
-            }
-        });
+        if (!document.querySelector('input[name="optionType"]:checked')) {
+            document.getElementById('errShippType').innerHTML = `
+                    
+                    <div class="alert alert-primary alert-dismissible fade show" role="alert">
+                        <strong>Por favor.</strong> Seleccione un tipo de envío para continuar.
+                        <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                            <span aria-hidden="true">&times;</span>
+                        </button>
+                    </div>
+                    `
+            existErr = true;
+        }
 
-        corner.addEventListener('keyup', () => {
-            if (!text.test(corner.value) || corner.length > 20) {
-                errorCorner.innerHTML = `
-                <span style="color:red">Error</span> datos inválidos
-                `
-                return false;
-            } else {
-                errorCorner.innerHTML = ``
-            }
-        });
+        if (!document.querySelector('input[name="modalOption"]:checked')) {
+            document.getElementById('alertPay').innerHTML = `
+                    
+                    <div class="alert alert-warning alert-dismissible fade show" role="alert">
+                        <strong>Por favor.</strong> Seleccione y rellene los campos de forma de pago para continuar.
+                        <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                            <span aria-hidden="true">&times;</span>
+                        </button>
+                    </div>
+                    `
+            existErr = true;
+        }
 
-        number.addEventListener('keyup', () => {
-            if (!num.test(number.value)) {
-                errorNumber.innerHTML = `
-                <span style="color:red">Error</span> datos inválidos
-                `
-                return false;
-            } else {
-                errorNumber.innerHTML = ``
-            }
-        });
-        let numCard = RegExp(/^[0-9]{16}$/)
-        let numCvv = RegExp(/^[0-9]{3}$/)
 
-        btnSubForm.addEventListener('click', ()=>{
-            if (numberCard.value === "" || cvvCard.value === "" || numberAccount.value === "") {
-                document.getElementById('alertPay').innerHTML = `
-                
-                <div class="alert alert-warning alert-dismissible fade show" role="alert">
-                    <strong>Por favor.</strong> Seleccione y rellene los campos de forma de pago para continuar.
-                    <button type="button" class="close" data-dismiss="alert" aria-label="Close">
-                        <span aria-hidden="true">&times;</span>
-                    </button>
-                </div>
-                `
-                console.log("error")
-            }
-        });
-
-        let errorCardNum = document.getElementById('errCardNum');
-        numberCard.addEventListener('keyup', ()=>{
-            if(!numCard.test(numberCard.value)){
-                errorCardNum.innerHTML = `
-                <span style="color:red">Error</span> datos inválidos
-                `
-            }else{
-                errorCardNum.innerHTML = ``
-            }
-        })
-        let errorCvv = document.getElementById('errCvvCard');
-        cvvCard.addEventListener('keyup', ()=>{
-            if(!numCvv.test(cvvCard.value)){
-                errorCvv.innerHTML = `
-                <span style="color:red">Error</span> datos inválidos
-                `
-            }else{
-                errorCvv.innerHTML = ``
-            }
-        })
-    }
-    
-    validateFields();
+        if (existErr) {
+            e.preventDefault();
+        }else if(existErr = true){
+            fetch(CART_BUY_URL)
+                .then(res => res.json())
+                .then(data => {
+            
+                    document.getElementById('alertMsgBuy').innerHTML = `
+                            <div class="alert alert-success alert-dismissible fade show" role="alert">
+                                <strong>Excelente!</strong> ${data.msg}
+                                <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                                    <span aria-hidden="true">&times;</span>
+                                </button>
+                            </div>
+                            `
+                });
+        }
+    });
 });
 
-document.getElementById('formCart').addEventListener('submit', ()=>{});
+
+
+

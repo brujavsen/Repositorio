@@ -57,6 +57,7 @@ var getJSONData = function(url){
   });
   //Cerrar sesión
 
+
   const headDiv = document.getElementById('userProfile');
 
   let nameUser = JSON.parse(localStorage.getItem('users'));
@@ -65,6 +66,12 @@ var getJSONData = function(url){
   if(nameUser != null){
     headDiv.innerHTML = nameUser[0].usuario;
   }
+
+  let myProfileInfo = JSON.parse(localStorage.getItem('myInfoUser'));
+
+  
+  
+  
 
 
 //Reloj en pantalla

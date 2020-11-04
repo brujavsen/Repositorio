@@ -37,25 +37,25 @@
     <h1 class="myCart display-4">Mi Carrito</h1>
     <div id="cntCart"></div>
 
-    <form action="msgBuy.html" method="GET" class="container" id="formCart">
+    <form method="POST" class="container" id="formCart" action="index.html">
         <!-- Método de envío -->
         <h2>Ingrese sus datos</h2>
         <div class="form-row">
           <div class="form-group col-md-2">
             <label for="inputAddress1">Calle</label>
-            <input type="text" class="form-control" id="inputAddress1">
+            <input type="text" name="adress" class="form-control" id="inputAddress1" >
             <span id="errStreet" class="text-muted"></span>
           </div>
         </div>
         <div class="form-row">
           <div class="form-group col-md-2">
             <label for="inputAddress2">Esquina</label>
-            <input type="text" class="form-control" id="inputAddress2">
+            <input type="text" name="adress" class="form-control" id="inputAddress2" >
             <span id="errCorner" class="text-muted"></span>
           </div>
           <div class="form-group col-md-2">
             <label for="inputAddress3">Número</label>
-            <input type="text" class="form-control" id="inputAddress3">
+            <input type="text" name="adress" class="form-control" id="inputAddress3" >
             <span id="errNumber" class="text-muted"></span>
           </div>
         </div>
@@ -66,12 +66,20 @@
         <h2>Tipo de envío</h2>
         <div class="form-row">
           <div id="formShippType" class="form-group col-md-3">
-            <input type="radio" name="optionType" id="inputPremium" class="inputType" value="premium" required>
-            <label for="premium">Premium (2-5 días)</label><br>
-            <input type="radio" name="optionType" id="inputExpress" class="inputType" value="express">
-            <label for="express">Express (5-8 días)</label><br>
-            <input type="radio" name="optionType" id="inputStandard" class="inputType" value="standard">
-            <label for="standard">Standard (12 a 15 días)</label>
+            <div class="d-block my-3">
+              <div class="custom-control custom-radio success">
+                <input id="inputPremium" name="optionType" type="radio" class="custom-control-input">
+                <label class="custom-control-label" for="inputPremium">Envío Premium (2 a 5 días)</label>
+              </div>
+              <div class="custom-control custom-radio">
+                <input id="inputExpress" name="optionType" type="radio" class="custom-control-input">
+                <label class="custom-control-label" for="inputExpress">Envío exprés (5 a 8 días)</label>
+              </div>
+              <div class="custom-control custom-radio">
+                <input id="inputStandard" name="optionType" type="radio" class="custom-control-input">
+                <label class="custom-control-label" for="inputStandard">Envío estandar (12 a 15 días)</label>
+              </div>
+            </div>
           </div>
         </div>
         <!-- Fin método de envío -->
@@ -98,28 +106,20 @@
           </tbody>
         </table>
         <!-- Fin subtotal... -->
-
-      <hr>
-
-        <!-- Button formas de pago -->
-        <h2>Formas de Pago</h2>
-        <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#payModal">
-          Seleccionar
-        </button>
-        <div id="alertPay"></div>
-
+  
         <!-- Forma de pago -->
-        <div class="modal fade" id="payModal" tabindex="-1" role="dialog" aria-labelledby="payModalOptions" aria-hidden="true">
+        <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#payModal">Seleccionar forma de pago</button>
+        <div class="modal fade" id="payModal" tabindex="-1" role="dialog" aria-labelledby="payModalOptions" aria-hidden="true" data-toggle="modal">
           <div class="modal-dialog" role="document">
             <div class="modal-content">
               <div class="modal-header">
                 <h5 class="modal-title" id="selectOptionModal">Elija una opción</h5>
-                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close" data-target="#exampleModalCenter">
                   <span aria-hidden="true">&times;</span>
                 </button>
               </div>
               <div class="modal-body">
-                <input type="radio" name="modalOption" id="cardInput" value="credCard" checked>
+                <input type="radio" name="modalOption" id="cardInput" value="credCard">
                 <label for="cardInput">Tarjeta de crédito</label>
 
                 <hr>
@@ -132,12 +132,12 @@
                   <input type="text" name="opCard" id="cvvCardInput" class="inputCardOption" placeholder="CVV"><br>
                   <div id="errCvvCard"></div>
                   <i class="far fa-calendar"></i>
-                  <input type="date" name="opCard" id="cardExpInput" class="inputCardOption" placeholder="MM/AA">
+                  <input type="text" name="opCard" id="cardExpInput" class="inputCardOption" placeholder="MM/AA">
                   <div id="errExpCard"></div> 
                 </div>
-
+  
                 <hr>
-
+                
                 <input type="radio" name="modalOption" id="transferInput" value="transfWire">
                 <label for="transferInput">Transferencia bancaria</label>
 
@@ -146,7 +146,7 @@
                 <div id="optionTransfer">
                   <label for="numAccount">Ingrese su número de cuenta</label><br>
                   <i class="fas fa-wallet"></i>
-                  <input type="text" name="numberAccount" id="numAccount" class="inputTransfOption" placeholder="Número de cuenta" disabled>
+                  <input type="text" name="numberAccount" id="numAccount" class="inputTransfOption" placeholder="Número de cuenta">
                 </div>
               </div>
               <div class="modal-footer">
@@ -156,13 +156,12 @@
           </div>
         </div>
         <!-- Fin Forma de pago -->
-
-      <hr>
-
-        <button type="submit" class="btn btn-success" id="btnPay">Proceder a pagar</button>
-        
+        <hr>
+        <input type="submit" id="btnPay" class="container btn btn-success" value="Proceder a pagar">
+        <div id="alertPay"></div>
     </form>
 
+      
     <div id="spinner-wrapper">
       <div class="lds-ring">
         <div></div>
