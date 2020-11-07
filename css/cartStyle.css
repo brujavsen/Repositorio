@@ -17,16 +17,12 @@
     margin-left: 70px;
 }
 
-.namePrd{
-    margin-left: auto;
-    margin-right: auto;
+.namePrd h2 {
+    font-size: 20px;
 }
 
-.showCnt {
+.showCnt{
     inline-size: 80%;
-    margin-left: auto;
-    margin-right: auto;
-    text-align: right;
 }
 
 .imgPrd img {

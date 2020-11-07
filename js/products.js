@@ -15,6 +15,7 @@ function showProductList(products){
             ((maxCount == undefined) || (maxCount != undefined && parseInt(category.cost) <= maxCount))){
 
             htmlContentToAppend += `
+            <div class="col-md-4">
                 <a href="./product-info.html?product=`+ category.name +`" class="card mb-4 shadow-sm custom-card">
                     <img class="bd-placeholder-img card-img-top"  src="` + category.imgSrc + `">
                     <h3 class="m-3">`+ category.name +`</h3>
@@ -23,7 +24,8 @@ function showProductList(products){
                         <small class="text-muted">`+ category.soldCount +` articulos</small>
                         <small class="text-muted">`+ category.cost + " " + category.currency +` </small>
                     </div>
-                </a>
+                </a> 
+            </div>
             `
         }
         document.getElementById("categoria").innerHTML = htmlContentToAppend;

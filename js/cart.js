@@ -1,6 +1,5 @@
 const CART_URL = "https://japdevdep.github.io/ecommerce-api/cart/654.json";
 const formAction = document.getElementById('formCart');
-const btnSubForm = document.getElementById('btnPay')
 const container_info = document.getElementById('cntCart');
 const subtotalCnt = document.getElementById('subtotal');
 const costShipCnt = document.getElementById('costShip');
@@ -35,12 +34,12 @@ function showInfoCart(data) {
 
         htmlContentToAppend +=
             `            
-            <div class="showCnt container shadow-lg p-3 mb-1 bg-white rounded">
+            <div class="showCnt container shadow-lg p-3 mb-1 bg-white rounded justify-content-md-left">
                 <div class="row">
                     <div class="col imgPrd">
                         <img src="`+ info.src + `" class="rounded">
                     </div>
-                    <div class="col font-weight-bold namePrd">
+                    <div class="col namePrd">
                         <h2>`+ info.name + `</h2>
                     </div>
                     <div class="col priceCnt">
@@ -161,17 +160,21 @@ inputTransfer.addEventListener('change', function () {
     expirCard.disabled = true;
 });
 
+//Validaciones con expresiones regulares
 function validationRegExp(){
     var text = RegExp(/[a-zA-Zá-ü0-9]{2,15}$/)
     var num = RegExp(/^[0-9]{2,5}$/)
     var numCard = RegExp(/^[0-9]{15}$/)
     var numCvv = RegExp(/^[0-9]{3}$/)
+    var numExpir = RegExp(/[0-9\-]{5}$/)
     let errorStreet = document.getElementById('errStreet');
     let errorCorner = document.getElementById('errCorner');
     let errorNumber = document.getElementById('errNumber');
     let numberErrCard = document.getElementById('errCardNum');
     let cvvErrCard = document.getElementById('errCvvCard');
+    let expirErrCard = document.getElementById('errExpCard');
 
+    //Inicio: formulario datos
     inputStreet.addEventListener('keyup', () => {
         if (!text.test(inputStreet.value) || inputStreet.value > 20) {
             errorStreet.innerHTML = `
@@ -201,7 +204,9 @@ function validationRegExp(){
             errorNumber.innerHTML = ``
         }
     });
+    //Fin: formulario datos
 
+    //Inicio: formulario Modal (solo tarjeta de crédito)
     numberCard.addEventListener('keyup', () => {
         if (!numCard.test(numberCard.value)) {
             numberErrCard.innerHTML = `
@@ -222,14 +227,30 @@ function validationRegExp(){
         }
     });
 
-}
-//Validación para compra
+    expirCard.addEventListener('keyup', ()=>{
+        if(!numExpir.test(expirCard.value)){
+            expirErrCard.innerHTML = `
+            <span style="color:red">Error</span> datos inválidos
+            `
+        }else {
+            expirErrCard.innerHTML = ``
+        }
+    });
+    //Fin: formulario Modal
+
+};
+
+
+//Validaciones para compra exitosa
 document.addEventListener('DOMContentLoaded', () => {
+
     validationRegExp();
 
     formAction.addEventListener('submit', (e) => {
+
         let existErr = false;
 
+        //Validación de campos vacíos (datos)
         if (inputStreet.value === "" || inputCorner.value === "" || inputNumber.value === "") {
             document.getElementById('alertFields').innerHTML = `
                 <div class="alert alert-danger alert-dismissible fade show" role="alert">
@@ -242,6 +263,7 @@ document.addEventListener('DOMContentLoaded', () => {
             existErr = true;
         }
 
+        //Validación de tipo de envío
         if (!document.querySelector('input[name="optionType"]:checked')) {
             document.getElementById('errShippType').innerHTML = `
                     
@@ -255,6 +277,7 @@ document.addEventListener('DOMContentLoaded', () => {
             existErr = true;
         }
 
+        //Validación de formas de pago
         if (!document.querySelector('input[name="modalOption"]:checked')) {
             document.getElementById('alertPay').innerHTML = `
                     
@@ -271,24 +294,9 @@ document.addEventListener('DOMContentLoaded', () => {
 
         if (existErr) {
             e.preventDefault();
-        }else if(existErr = true){
-            fetch(CART_BUY_URL)
-                .then(res => res.json())
-                .then(data => {
-            
-                    document.getElementById('alertMsgBuy').innerHTML = `
-                            <div class="alert alert-success alert-dismissible fade show" role="alert">
-                                <strong>Excelente!</strong> ${data.msg}
-                                <button type="button" class="close" data-dismiss="alert" aria-label="Close">
-                                    <span aria-hidden="true">&times;</span>
-                                </button>
-                            </div>
-                            `
-                });
         }
     });
 });
-
 
 
 

@@ -177,7 +177,7 @@ a.custom-card:hover {
 
 /* Reloj en pantalla */
 #clock {
-  background-image: url("https://www.xmple.com/wallpaper/red-gradient-pink-linear-1920x1080-c2-e9967a-db7093-a-300-f-14.svg");
+  background-image: url("https://entrazos.com/wp-content/uploads/2014/12/nieve.gif");
   background-size: cover;
   font-family: monospace;
   font-size: 15px;
@@ -186,7 +186,7 @@ a.custom-card:hover {
   margin-left: -100px;
   align-items: center;
   margin-inline-end: -100px;
-  border: 2px solid black;
+  border: 2px solid white;
   border-radius: 90px 90px 90px 90px;
 }
 
