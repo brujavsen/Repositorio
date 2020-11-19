@@ -1,265 +1,211 @@
-
 //Información del producto
 fetch(PRODUCT_INFO_URL)
     .then(response => response.json())
     .then(info => {
         //muestra en pantalla la información del producto
-       let showProductInfo = document.getElementById("contenedorInfo");
-       showProductInfo.innerHTML = `
-        <div class="container">
-            <div class="row">
-                <div class="col">
-                    <div id="container-productInfo" class"jumbotron">
- 
-                    <ul class="list-group">
-                        <li class="list-group-item d-flex justify-content-between align-items-center">
-                            <h2 class="display-4">`+ info.name +`</h2>
-                        </li>
-                        <li class="list-group-item d-flex justify-content-between align-items-center">
-                            <p class="costPrd">Precio:</p> <span class="badge badge-primary badge-pill">`+ info.currency + " " + info.cost +`</span>
-                        </li>
-
-                        <li class="list-group-item d-flex justify-content-between align-items-center">
-                            <p class="countPrd">Cantidad:</p> <span class="badge badge-primary badge-pill">`+ info.soldCount +`</span>                
-                        </li>
-
-                        <li class="list-group-item d-flex justify-content-between align-items-center">
-                            <div class="lead">Categoria:</div> <span class="badge badge-primary badge-pill">`+ info.category +`</span>
-                        </li>
-                    </ul>
-
-                        <a class="buyPrd btn btn-info" href="./cart.html">Añadir al carrito<a>
-
-                    </div>
-
-                    <div id="cnt-descInfo">
-                        <div class="col-9">
-                            <h2>Descripción:</h2>
-                            <p>` + info.description +`</p>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
+        let showProductInfo = document.getElementById("containerInfo");
+        showProductInfo.innerHTML = `
+        
+            <table class="table">
+                <thead>
+                    <tr>
+                        <th scope="col">Nombre</th>
+                        <th scope="col">Costo</th>
+                        <th scope="col">Cantidad</th>
+                        <th scope="col">Categoría</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <th> `+ info.name + `</th>
+                        <td class="badge badge-success">`+ info.currency + " " + info.cost + `</td>
+                        <th>`+ info.soldCount + `</th>
+                        <td class="badge badge-danger">`+ info.category + `</td>
+                    </tr>
+                </tbody>
+            </table>
+            <p class="infoDesc">` + info.description + `</p>
+                
         `
     });
 
 
-//SlideShow Images
-    let slideImg = document.querySelector('.slider-img').children;
-    let nextSlide = document.querySelector('.right-slide');
-    let prevSlide = document.querySelector('.left-slide');
-    let totalSlideImg = slideImg.length;
-    let index=0;
-
-    nextSlide.onclick=function(){
-        next('next');
-    }
-
-    prevSlide.onclick=function(){
-        next('prev');
-    }
-
-    function next(direccion){
-
-        if(direccion=="next"){
-            index++;
-            if(index==totalSlideImg){
-                index=0;
-            }
-        }else{
-            if(index==0){
-                index==totalSlideImg-1;
-                }else{
-                    index--
-                }
-        }
-        for(i=0;i<slideImg.length;i++){
-            slideImg[i].classList.remove("active")
-        }
-        slideImg[index].classList.add("active");
-    }
-
-
 //Estrellas de comentarios
 
-    function showStar(stars){
+function showStar(stars) {
 
-        let htmlContentComment = "";
+    let htmlContentComment = "";
 
-        for(let i=0; i < stars.score; i++){
-            htmlContentComment += `
+    for (let i = 0; i < stars.score; i++) {
+        htmlContentComment += `
             <small class="text-muted"><span class="fa fa-star checked"></span></small>
             `;
-        }
-        return htmlContentComment;
-    };
+    }
+    return htmlContentComment;
+};
 
 //Comentarios del producto
-    function showComments(commentProd){
+function showComments(commentProd) {
 
-        let htmlContentComment = "";
+    let htmlContentComment = "";
 
-            for(let i = 0; i < commentProd.length; i++){
-                let comments = commentProd[i];
-                htmlContentComment +=
-                `
+    for (let i = 0; i < commentProd.length; i++) {
+        let comments = commentProd[i];
+        htmlContentComment +=
+            `
                 <div class="commentProduct">
                     <div>
-                        <h2>`+ comments.user + `<small class="text-muted">`+ showStar(comments) +`</small>`+ `</h2>
+                        <h2>`+ comments.user + `<small class="text-muted">` + showStar(comments) + `</small>` + `</h2>
                     </div><br>
                     <div>
-                        <small class="commentDesc">` + comments.description +`</small>
+                        <small class="commentDesc">` + comments.description + `</small>
                     </div><br>
                     <div>
-                        <small>`+ comments.dateTime +`</small>
+                        <small>`+ comments.dateTime + `</small>
                     </div>
                 </div>
                 `
-            };
-            let showComments = document.getElementById("contenedorComments");
-            showComments.innerHTML = htmlContentComment;
     };
+    let showComments = document.getElementById("contenedorComments");
+    showComments.innerHTML = htmlContentComment;
+};
 
 
-function showProductRel(dataRel, dataList){
+function showProductRel(dataRel, dataList) {
 
     let htmlContentProdRel = "";
-        for(let i=0; i < dataRel.relatedProducts.length; i++){
-            let listarProdRel = dataList[dataRel.relatedProducts[i]];
+    for (let i = 0; i < dataRel.relatedProducts.length; i++) {
+        let listarProdRel = dataList[dataRel.relatedProducts[i]];
 
-            htmlContentProdRel += 
+        htmlContentProdRel +=
             `
-            
-            <div class="productsRel">
-                <a href="./product-info.html?product=`+listarProdRel.name+`">
-                    <img src="` + listarProdRel.imgSrc + `" alt="` + listarProdRel.description + `" class="img-thumbnail">
-                    <h3 class="mb-1">`+ listarProdRel.name +`</h3>
-                    <small class="text-muted">` + listarProdRel.description +`</small><br>
-                    <small class="text-muted">`+ listarProdRel.soldCount +` articulos</small><br>
-                    <small class="text-muted">`+ listarProdRel.cost + " " + listarProdRel.currency +` </small>
-                </a> 
-            </div>
-            
+                <a class="card custom-card" href="./product-info.html?product=`+ listarProdRel.name + `">
+                    <div>
+                        <img src="` + listarProdRel.imgSrc + `" class="card-img-top" alt="` + listarProdRel.description + `">
+                        <div class="card-body">
+                            <h5 class="card-title font-weight-bold">`+ listarProdRel.name + `</h5>
+                            <p class="card-text">` + listarProdRel.description + `</p>
+                            <p class="card-text badge badge-primary">`+ listarProdRel.cost + " " + listarProdRel.currency + `</p>
+                        </div>
+                    </div>
+                </a>
             `
-        };
+    };
 
-        document.getElementById('relatedProd').innerHTML = htmlContentProdRel;
+    document.getElementById('relatedProd').innerHTML = htmlContentProdRel;
 };
 
 //Función que se ejecuta una vez que se haya lanzado el evento de
 //que el documento se encuentra cargado, es decir, se encuentran todos los
 //elementos HTML presentes.
-document.addEventListener("DOMContentLoaded", function(){
+document.addEventListener("DOMContentLoaded", function () {
 
-    getJSONData(PRODUCT_INFO_COMMENTS_URL).then(function(resultObj){
-        if (resultObj.status === "ok"){
-        var infoComment = resultObj.data;
-        //muestra los comentarios del producto en pantalla
-        showComments(infoComment);
+    getJSONData(PRODUCT_INFO_COMMENTS_URL).then(function (resultObj) {
+        if (resultObj.status === "ok") {
+            var infoComment = resultObj.data;
+            //muestra los comentarios del producto en pantalla
+            showComments(infoComment);
         };
     });
 
     //Objeto listado de información de productos
     getJSONData(PRODUCT_INFO_URL)
-        .then(function(infoObj){
+        .then(function (infoObj) {
             var infoProd = infoObj.data;
-            
+
             //Objeto listado de productos
             getJSONData(PRODUCTS_URL)
-            .then(function(resObj){
-                var listadoPrd = resObj.data;
-                console.log(infoProd);
-                console.log(listadoPrd);
+                .then(function (resObj) {
+                    var listadoPrd = resObj.data;
+                    console.log(infoProd);
+                    console.log(listadoPrd);
 
-                //Muestra productos relacionados
-                showProductRel(infoProd, listadoPrd);
-                
-            });
+                    //Muestra productos relacionados
+                    showProductRel(infoProd, listadoPrd);
+
+                });
         });
-   
-}); 
+
+});
 
 
 //Hora/fecha local
 
-    var fecha = new Date();
-    var dia = fecha.getDate();
-    var mes = fecha.getMonth();
-    var ano = fecha.getFullYear();
-    if(dia<10)
-    {
-        dia='0'+dia;
-    }
-    if(mes<10)
-    {
-        mes='0'+mes;
-    }
-    var hora = fecha.getHours();
-    var minutos = fecha.getMinutes();
-    var segundos = fecha.getSeconds();
-    fecha = dia+'-'+mes+'-'+ano+' '+hora+':'+minutos+':'+segundos;
-    
+var fecha = new Date();
+var dia = fecha.getDate();
+var mes = fecha.getMonth();
+var ano = fecha.getFullYear();
+if (dia < 10) {
+    dia = '0' + dia;
+}
+if (mes < 10) {
+    mes = '0' + mes;
+}
+var hora = fecha.getHours();
+var minutos = fecha.getMinutes();
+var segundos = fecha.getSeconds();
+fecha = dia + '-' + mes + '-' + ano + ' ' + hora + ':' + minutos + ':' + segundos;
+
 //Crear un nuevo comentario
 
-    let newComm = document.getElementById('commentUsuario');
-    let starComm = document.getElementById('clasificacion');
-    let usrCommName = document.getElementById('userComment');
-    let commentUser = document.getElementById('commUsr');
+let newComm = document.getElementById('commentUsuario');
+let starComm = document.getElementById('clasificacion');
+let usrCommName = document.getElementById('userComment');
+let commentUser = document.getElementById('commUsr');
 
-    function createNewComment(){
-  
-        //Datos ingresados por el usuario
-        function commentUsuario(nombre, comentario, estrellitas, fechaActual){
-            this.nombre=nombre;
-            this.comentario=comentario;
-            this.estrellitas=estrellitas;
-            this.fechaActual=fechaActual;
-        }
+function createNewComment() {
 
-        var nombreUser = usrCommName.value;
-        var comentarioUsr = newComm.value;
-        var starCommty = starComm.value;
-        var todayPrest = fecha;
+    //Datos ingresados por el usuario
+    function commentUsuario(nombre, comentario, estrellitas, fechaActual) {
+        this.nombre = nombre;
+        this.comentario = comentario;
+        this.estrellitas = estrellitas;
+        this.fechaActual = fechaActual;
+    }
 
-        //Crear nuevo comentario
-        nuevoComentario = new commentUsuario(nombreUser, comentarioUsr, starCommty, todayPrest);
-        console.log(nuevoComentario);
-        showComentary();
+    var nombreUser = usrCommName.value;
+    var comentarioUsr = newComm.value;
+    var starCommty = starComm.value;
+    var todayPrest = fecha;
 
-    };
+    //Crear nuevo comentario
+    nuevoComentario = new commentUsuario(nombreUser, comentarioUsr, starCommty, todayPrest);
+    console.log(nuevoComentario);
+    showComentary();
+
+};
 
 //Guarda nuevo comentario en array
-    var newCommentary = [];
+var newCommentary = [];
 
 //Selección de estrellas
 
-    function newStarComment(starCount){
+function newStarComment(starCount) {
 
-        let commUser = "";
-        for(let i=0; i < starCount.estrellitas; i++){
-            commUser += `
+    let commUser = "";
+    for (let i = 0; i < starCount.estrellitas; i++) {
+        commUser += `
             <small class="text-muted"><span class="fa fa-star checked"></span></small>
             `;
-        }
-        return commUser;
     }
+    return commUser;
+}
 
 //Muestra comentario en pantalla
-    function showComentary(){
-        newCommentary.push(nuevoComentario);
-        commentUser.innerHTML += `
-        <div class="commentProduct">
+function showComentary() {
+    newCommentary.push(nuevoComentario);
+    commentUser.innerHTML += `
+        <div>
             <div>
-                <h2>`+ nuevoComentario.nombre +`<small class="text-muted">`+ newStarComment(nuevoComentario) +`</small>`+ `</h2>
+                <h2>`+ nuevoComentario.nombre + `<small class="text-muted">` + newStarComment(nuevoComentario) + `</small>` + `</h2>
             </div>
             <br>
             <div>
-                <small>`+ nuevoComentario.comentario +`</small>
+                <small>`+ nuevoComentario.comentario + `</small>
             </div>
             <br>
             <div>
-                <small>`+ nuevoComentario.fechaActual +`</small>
+                <small>`+ nuevoComentario.fechaActual + `</small>
             </div>
         </div>`
-    }
+}

@@ -8,24 +8,14 @@ body{
 }
 
 .container{
+    margin-top: 10px;
     border: 2px black;
 }
 
 /*Slideshow images*/
-.slider {
-    border: 2px solid rgb(255, 255, 255);
-    margin: 380px;
-    margin-left: 1%;
-    margin-right: 50%;
-    margin-bottom: 0;
-    margin-top: 1%;
-    overflow: hidden;
-    border-radius: 5px;
-}
 
-.slider, .slider-img, .img img{
+.img-carousel{
     max-width: 100%;
-    display: block;
     position: relative;
     animation: zoom 1s ease;
 }
@@ -35,163 +25,52 @@ body{
     100%{transform: scale(1); opacity: 1;}
 }
 
-.slider, .slider-img, .img{
-    display: none;
+#btn-prev:hover, #btn-next:hover {
+    inline-size: 15%;
+    background-color: rgba(235, 41, 41, 0.39);
+    box-shadow: 0px 0px 10px white;
 }
 
-.slider, .slider-img, .img.active{
-    display: block;
-}
-
-.slider .left-slide, .slider .right-slide{
-    position: absolute;
-    height: 40px;
-    width: 40px;
-    background-color: #252323;
-    border-radius: 50%;
-    color: #ffffff;
-    font-size: 14px;
-    top: 50%;
-    cursor: pointer;
-    margin-top: -20px;
-    text-align: center;
-    line-height: 40px;
-    transition: all .5s ease;
-}
-
-.slider .left-slide:hover, .slider .right-slide:hover{
-    background-color: rgb(235, 41, 41);
-    box-shadow: 0px 0px 15px white;
-}
-
-.slider .left-slide{
-    left: 30px;
-}
-
-.slider .right-slide{
-    right: 30px;
-}
 /*Fin - Slideshow images*/
 
 
-
-/* Contenedor de información del producto */
-#container-productInfo{
-    color: rgb(80, 80, 78);
-    text-shadow: 0px 1px 2px black;
-    inline-size: 40%;
-    margin-left: auto;
-    margin-top: -36%;
-}
-
-#container-productInfo .costPrd, .countPrd, .lead {
+.table thead{
     font-size: 20px;
-    color: rgb(250, 239, 239);
-    background: rgb(114, 114, 114);
-    inline-size: 25%;
-    border-radius: 5px;
-    box-shadow: 0px 1px 2px black;
+    color: rgb(202, 56, 56);
+    text-shadow: 1px 1px 1px black;
 }
 
-/* Añadir al carrito */
-.buyPrd{
-    font-size: 18px;
-    border: 1px solid black;
-    margin-left: 32%;
-    margin-right: auto;
-}
-
-/* Descripción del producto */
-#cnt-descInfo {
-    margin-top: 2%;
-    margin-bottom: 5%;
-    box-shadow: 3px 2px 3px black;
-    border-radius: 5px;
-    inline-size: auto;
+.infoDesc {
+    font-family: 'Poppins', sans-serif;
     font-size: 20px;
+    font-weight: bold;
 }
 
-/*Productos relativos*/
-.productsRel {
-    inline-size: 30%;
-    background-color: rgb(255, 255, 255);
-    font-size: 15px;
-    text-align: center;
-    box-shadow: 0px 2px 3px black;
-    float: left;
-    margin-left: 10%;
-    margin-bottom: 8%;
+.card img {
+    width: 50%;
 }
 
-
-/*Caja de comentarios*/
-.commentProduct{
-    box-shadow: 1px 1px 2px rgb(204, 203, 203);
-    inline-size: 50%;
-    display: inline-block;
-}
-
-
-/*Estrellitas*/
-#form {
-    width: 250px;
-    margin: 0 auto;
-    height: 250px;
-  }
-  
-  #form p {
-    text-align: center;
-  }
-  
-  #form label {
-    font-size: 20px;
-  }
-  
-  input[type="radio"] {
-    display: none;
-  }
-  
-  label {
-    color: grey;
-  }
-  
-  .clasificacion {
-    direction: rtl;
-    unicode-bidi: bidi-override;
-  }
-  
-  label:hover,
-  label:hover ~ label {
-    color: orange;
-  }
-  
-  input[type="radio"]:checked ~ label {
-    color: orange;
-  }
-
-/* Area de comentarios */
-#commentArea {
-    inline-size: 50%;
-    margin-top: 10%;
-}
-
-#commentArea button[type="submit"]{
-    margin-left: 13%;
-}
-
-/*Clasificación del usuario*/
-#clasificacion{
-    margin-bottom: 3%;
+form input[type="text"] {
+    border: none;
+    outline: none;
+    background: none;
+    border-bottom: 1px solid black;
+    margin-bottom: 10px;
 }
 
 /*Volver atrás*/
 .goBack{
-    font-family: Arial, Helvetica, sans-serif;
     text-align: center;
-    border: 1px solid rgb(109, 107, 106);
-    inline-size: 20%;
-    margin-right: auto;
-    margin-left: auto;
-    margin-top: 5%;
-    font-size: 150%;
+    width: 20%;
+	height: 50px;
+	border-radius: 25px;
+	outline: none;
+	border: none;
+	background-image: linear-gradient(to right, #d82c2c, #d82c2c, #d82c2c);
+	background-size: 50%;
+	font-size: 20px;
+	color: rgb(255, 255, 255);
+	font-family: 'Poppins', sans-serif;
+    transition: .5s;
+    margin-bottom: 10px;
 }

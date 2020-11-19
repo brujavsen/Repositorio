@@ -21,8 +21,8 @@ function showProductList(products){
                     <h3 class="m-3">`+ category.name +`</h3>
                     <div class="card-body">
                         <p class="card-text">` + category.description +`</p>
-                        <small class="text-muted">`+ category.soldCount +` articulos</small>
-                        <small class="text-muted">`+ category.cost + " " + category.currency +` </small>
+                        <small class="badge badge-primary">`+ category.soldCount +` articulos</small><br>
+                        <small class="badge badge-success">`+ category.cost + " " + category.currency +` </small>
                     </div>
                 </a> 
             </div>
@@ -57,15 +57,17 @@ document.addEventListener("DOMContentLoaded", function (e) {
             let nombre = productoArr.name.toLowerCase();
             if(nombre.indexOf(texto) !== -1){
                 result.innerHTML += `
-                    <a href="./product-info.html?product=`+ category.name +`" class="card mb-4 shadow-sm custom-card">
-                        <img class="bd-placeholder-img card-img-top"  src="` + category.imgSrc + `">
-                        <h3 class="m-3">`+ category.name +`</h3>
-                        <div class="card-body">
-                            <p class="card-text">` + category.description +`</p>
-                            <small class="text-muted">`+ category.soldCount +` articulos</small>
-                            <small class="text-muted">`+ category.cost + " " + category.currency +` </small>
-                        </div>
-                    </a>
+                    <div class="col-md-4">
+                        <a href="./product-info.html?product=`+ productoArr.name +`" class="card mb-4 shadow-sm custom-card">
+                            <img class="bd-placeholder-img card-img-top"  src="` + productoArr.imgSrc + `">
+                            <h3 class="m-3">`+ productoArr.name +`</h3>
+                            <div class="card-body">
+                                <p class="card-text">` + productoArr.description +`</p>
+                                <small class="text-muted">`+ productoArr.soldCount +` articulos</small>
+                                <small class="text-muted">`+ productoArr.cost + " " + productoArr.currency +` </small>
+                            </div>
+                        </a> 
+                    </div>
                 `;
             }
         };

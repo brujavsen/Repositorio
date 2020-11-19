@@ -4,18 +4,18 @@ const container_info = document.getElementById('cntCart');
 const subtotalCnt = document.getElementById('subtotal');
 const costShipCnt = document.getElementById('costShip');
 const totalCnt = document.getElementById('total');
-let inputStreet = document.getElementById('inputAddress1');
-let inputCorner = document.getElementById('inputAddress2');
-let inputNumber = document.getElementById('inputAddress3');
-let PremiumInput = document.getElementById('inputPremium');
-let ExpressInput = document.getElementById('inputExpress');
-let StandardInput = document.getElementById('inputStandard');
-let inputCard = document.getElementById('cardInput');
-let inputTransfer = document.getElementById('transferInput');
-let numberCard = document.getElementById('numCardInput');
-let cvvCard = document.getElementById('cvvCardInput');
-let expirCard = document.getElementById('cardExpInput');
-let numberAccount = document.getElementById('numAccount');
+const inputStreet = document.getElementById('inputAddress1');
+const inputCorner = document.getElementById('inputAddress2');
+const inputNumber = document.getElementById('inputAddress3');
+const PremiumInput = document.getElementById('inputPremium');
+const ExpressInput = document.getElementById('inputExpress');
+const StandardInput = document.getElementById('inputStandard');
+const inputCard = document.getElementById('cardInput');
+const inputTransfer = document.getElementById('transferInput');
+const numberCard = document.getElementById('numCardInput');
+const cvvCard = document.getElementById('cvvCardInput');
+const expirCard = document.getElementById('cardExpInput');
+const numberAccount = document.getElementById('numAccount');
 var subtotal = [];
 let total = [];
 let converUSDaUY = 40;
@@ -34,19 +34,19 @@ function showInfoCart(data) {
 
         htmlContentToAppend +=
             `            
-            <div class="showCnt container shadow-lg p-3 mb-1 bg-white rounded justify-content-md-left">
+            <div class="container shadow-lg p-3 mb-1 bg-white rounded justify-content-md-left">
                 <div class="row">
-                    <div class="col imgPrd">
+                    <div class="col img-cnt">
                         <img src="`+ info.src + `" class="rounded">
                     </div>
-                    <div class="col namePrd">
+                    <div class="col">
                         <h2>`+ info.name + `</h2>
                     </div>
-                    <div class="col priceCnt">
+                    <div class="col">
                         <p>Precio:</p>
                         <h4>$`+ info.unitCost + " " + info.currency + `</h4>
                     </div>
-                    <div class="col amountPrd">
+                    <div class="col">
                         <label for="cantUser">Cantidad:</label>
                         <input type="number" min="0" class="amountUser" id="input${i}" value="0">
                     </div>
@@ -76,20 +76,6 @@ function showInfoCart(data) {
     };
 
 };
-
-//Función que se ejecuta una vez que se haya lanzado el evento de
-//que el documento se encuentra cargado, es decir, se encuentran todos los
-//elementos HTML presentes.
-document.addEventListener("DOMContentLoaded", function () {
-
-    getJSONData(CART_URL).then(function (resObj) {
-        if (resObj.status === "ok") {
-            var infoCart = resObj.data;
-            showInfoCart(infoCart.articles);
-        };
-    });
-
-});
 
 //Inicio: Muestra total con selección de tipo de envío
 PremiumInput.addEventListener('change', () => {
@@ -139,8 +125,6 @@ StandardInput.addEventListener('change', () => {
     }
 });
 //Fin: Muestra total con selección de tipo de envío
-
-
 
 //Cambia atributos de modal de formas de pago, interactua con los cambios a selección
 
@@ -240,10 +224,18 @@ function validationRegExp(){
 
 };
 
-
-//Validaciones para compra exitosa
+//Función que se ejecuta una vez que se haya lanzado el evento de
+//que el documento se encuentra cargado, es decir, se encuentran todos los
+//elementos HTML presentes.
 document.addEventListener('DOMContentLoaded', () => {
 
+    getJSONData(CART_URL).then(function (resObj) {
+        if (resObj.status === "ok") {
+            var infoCart = resObj.data;
+            showInfoCart(infoCart.articles);
+        };
+    });
+    
     validationRegExp();
 
     formAction.addEventListener('submit', (e) => {

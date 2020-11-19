@@ -18,14 +18,14 @@
   </head>
   
   <body onload="clockOnTime()"> 
-    <nav class="site-header sticky-top py-1 bg-dark">
+    <nav class="site-header sticky-top py-1">
       <div class="container d-flex flex-column flex-md-row justify-content-between">
         <a class="py-2 d-none d-md-inline-block" href="index.html">Inicio <i class="fas fa-home"></i></a>
         <a class="py-2 d-none d-md-inline-block" href="categories.html">Categorías <i class="fas fa-clipboard-list"></i></a>
         <a class="py-2 d-none d-md-inline-block" href="products.html">Productos <i class="fas fa-shopping-basket"></i></a>
         <a class="py-2 d-none d-md-inline-block" href="sell.html">Vender <i class="fas fa-box"></i></a>
         <a class="btn dropdown-toggle" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" id="userProfile"></a>
-        <div class="dropdown-menu active btn-success" aria-labelledby="dropdownMenuLink">
+        <div class="dropdown-menu active btn-warning" aria-labelledby="dropdownMenuLink">
           <a class="dropdown-item" href="cart.html">Mi carrito<i class="fas fa-shopping-cart"></i></a>
           <a class="dropdown-item" href="my-profile.html">Mi perfil <i class="far fa-user"></i></a>
           <div class="dropdown-divider"></div>
@@ -34,8 +34,10 @@
         <div id="clock" class="card bg-info text-white"></div>
       </div>
     </nav>
-    <h1 class="myCart display-4">Mi Carrito</h1>
-    <div id="cntCart"></div>
+    <div class="container">
+      <h1 class="myCart display-4">Mi Carrito</h1>
+      <div id="cntCart"></div>
+    </div>
 
     <form method="POST" class="container" id="formCart" action="./msgBuy.html">
         <!-- Método de envío -->
@@ -71,11 +73,11 @@
               </div>
               <div class="custom-control custom-radio">
                 <input id="inputExpress" name="optionType" type="radio" class="custom-control-input">
-                <label class="custom-control-label" for="inputExpress">Envío exprés (5 a 8 días)</label>
+                <label class="custom-control-label" for="inputExpress">Envío Express (5 a 8 días)</label>
               </div>
               <div class="custom-control custom-radio">
                 <input id="inputStandard" name="optionType" type="radio" class="custom-control-input">
-                <label class="custom-control-label" for="inputStandard">Envío estandar (12 a 15 días)</label>
+                <label class="custom-control-label" for="inputStandard">Envío Estandar (12 a 15 días)</label>
               </div>
             </div>
           </div>
@@ -121,21 +123,21 @@
                 </button>
               </div>
               <div class="modal-body">
-                <input type="radio" name="modalOption" id="cardInput" class="custom-control-input" value="credCard">
+                <input type="radio" name="modalOption" id="cardInput" value="credCard">
                 <label for="cardInput">Tarjeta de crédito</label>
 
                 <hr>
 
                 <div id="optionCard">
-                  <label for="numCardInput">Ingrese número de tarjeta</label>
+                  <label for="numCardInput">Ingrese número de tarjeta</label><br>
                   <i class="fas fa-credit-card"></i>
                   <input type="text" name="opCard" id="numCardInput" class="inputCardOption" placeholder="Número de tarjeta">
                   <div id="errCardNum"></div>
-                  <label for="cvvCardInput">Ingrese CVV</label>
+                  <label for="cvvCardInput">Ingrese CVV</label><br>
                   <i class="fas fa-key"></i>
                   <input type="text" name="opCard" id="cvvCardInput" class="inputCardOption" placeholder="CVV"><br>
                   <div id="errCvvCard"></div>
-                  <label for="cardExpInput">Ingrese fecha de vencimiento</label>
+                  <label for="cardExpInput">Ingrese fecha de vencimiento</label><br>  
                   <i class="far fa-calendar"></i>
                   <input type="text" name="opCard" id="cardExpInput" class="inputCardOption" placeholder="MM/AA">
                   <div id="errExpCard"></div> 
@@ -143,7 +145,7 @@
   
                 <hr>
                 
-                <input type="radio" name="modalOption" id="transferInput" class="custom-control-input" value="transfWire">
+                <input type="radio" name="modalOption" id="transferInput" value="transfWire">
                 <label for="transferInput">Transferencia bancaria</label>
 
                 <hr>

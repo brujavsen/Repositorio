@@ -39,4 +39,4 @@ togglePass.addEventListener('click', function () {
     userPass.setAttribute('type', type);
     // alterna el icono a Eye-slash
     this.classList.toggle('fa-eye-slash');
-});
+}); 

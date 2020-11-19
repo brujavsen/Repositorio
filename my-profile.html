@@ -4,50 +4,29 @@
 
 <head>
   <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-
   <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
   <meta name="description" content="">
   <title>eMercado - Todo lo que busques está aquí</title>
-
   <link rel="canonical" href="https://getbootstrap.com/docs/4.3/examples/album/">
   <link href="https://fonts.googleapis.com/css?family=Raleway:300,300i,400,400i,700,700i,900,900i" rel="stylesheet">
-  <script src="https://kit.fontawesome.com/806392c754.js" crossorigin="anonymous"></script>
-  <style>
-    .bd-placeholder-img {
-      font-size: 1.125rem;
-      text-anchor: middle;
-      -webkit-user-select: none;
-      -moz-user-select: none;
-      -ms-user-select: none;
-      user-select: none;
-    }
-
-    @media (min-width: 768px) {
-      .bd-placeholder-img-lg {
-        font-size: 3.5rem;
-      }
-    }
-
-    img{
-      width: 100PX;
-      height: 100px;
-      margin: 10px;
-    }
-  </style>
   <link href="css/bootstrap.min.css" rel="stylesheet">
+  <link rel="preconnect" href="https://fonts.gstatic.com">
+  <link href="https://fonts.googleapis.com/css2?family=Poppins&display=swap" rel="stylesheet">
+  <script src="https://kit.fontawesome.com/806392c754.js" crossorigin="anonymous"></script>
   <link href="css/styles.css" rel="stylesheet">
   <link href="css/dropzone.css" rel="stylesheet">
+  <link rel="stylesheet" href="css/myProfile.css">
 </head>
 
 <body onload="clockOnTime()"> 
-  <nav class="site-header sticky-top py-1 bg-dark">
+  <nav class="site-header sticky-top py-1">
     <div class="container d-flex flex-column flex-md-row justify-content-between">
       <a class="py-2 d-none d-md-inline-block" href="index.html">Inicio <i class="fas fa-home"></i></a>
       <a class="py-2 d-none d-md-inline-block" href="categories.html">Categorías <i class="fas fa-clipboard-list"></i></a>
       <a class="py-2 d-none d-md-inline-block" href="products.html">Productos <i class="fas fa-shopping-basket"></i></a>
       <a class="py-2 d-none d-md-inline-block" href="sell.html">Vender <i class="fas fa-box"></i></a>
       <a class="btn dropdown-toggle" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" id="userProfile"></a>
-      <div class="dropdown-menu active btn-success" aria-labelledby="dropdownMenuLink">
+      <div class="dropdown-menu active btn-warning" aria-labelledby="dropdownMenuLink">
         <a class="dropdown-item" href="cart.html">Mi carrito<i class="fas fa-shopping-cart"></i></a>
         <a class="dropdown-item" href="my-profile.html">Mi perfil <i class="far fa-user"></i></a>
         <div class="dropdown-divider"></div>
@@ -61,43 +40,54 @@
     <h2>Mi perfil</h2>
     <div id="photoProfile" class="card" style="width: 18rem;">
     </div>
-    <form action="#" id="formProfile">
+    <div class="tableInfo">
+      <table class="table">
+        <thead>
+          <tr>
+            <th><p>Nombre:</p></th>
+            <th><p>Apellido:</p></th>
+            <th><p>Edad:</p></th>
+            <th><p><i class="fas fa-at"></i>Correo eléctronico:</p></th>
+            <th><p><i class="fas fa-phone"></i> Número de contacto: </p></th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td scope="row"><span id="showName"></span></td>
+            <td><span id="showLastName"></span></td>
+            <td><span id="showAge"></span></td>
+            <td><span id="showEmail"></span></td>
+            <td><span id="showPhone"></span></td>
+          </tr>
+        </tbody>
+      </table>
+      <button class="btn btn-warning" id="changeInfo">Editar</button> 
+    </div>
+    <div class="custom-file">
+      <input type="file" class="custom-file-input" id="addImgProfile">
+      <label class="custom-file-label" for="addImgProfile">En proceso</label>
+    </div>
+    <form action="#" id="formProfile" class="hideForm">
       <div class="form-group">
         <div class="form-row">
-          <div class="custom-file">
-            <input type="file" class="custom-file-input" id="addImgProfile" disabled>
-            <label class="custom-file-label" for="addImgProfile">En proceso</label>
+
+          <div class="firstCol col-md-5 mb-1">
+            <input type="text" id="nameProfile" class="form-control" value="" placeholder="Nombre">
+            <input type="text" id="lastNameProfile" class="form-control" value="" placeholder="Apellido">
+            <input type="text" id="ageProfile" class="form-control" value="" placeholder="Edad">
           </div>
-          <div class="col-md-5 mb-1">
-            <label for="nameProfile">Nombre</label>
-            <input type="text" id="nameProfile" class="form-control" value="">
-            <label for="lastNameProfile">Apellido</label>
-            <input type="text" id="lastNameProfile" class="form-control" value="">
-            <label for="ageProfile">Edad</label>
-            <input type="text" id="ageProfile" class="form-control" value="">
+
+          <div class="secondCol col-md-5 mb-3">
+            <input type="text" id="emailProfile" class="form-control" value="" placeholder="Correo eléctronico">
+            <span id="errorEmail"></span>
+            <input type="text" id="phoneProfile" class="form-control" value="" placeholder="Número de contacto">
+            <span id="errorNumber"></span>
           </div>
-          <div class="col-md-5 mb-3">
-            <label for="emailProfile">Correo eléctronico</label>
-            <input type="email" id="emailProfile" class="form-control" value="">
-            <label for="phoneProfile">Número de contacto</label>
-            <input type="text" id="phoneProfile" class="form-control" value="">
-          </div>
-        </div>
+        </div> 
       </div>
-      <button class="btn btn-primary" name="change" id="changeInfoUser">Cambiar</button><br>
+      <button class="btn btn-success" name="change" id="changeInfoUser">Cambiar</button><br>
+      <div id="errForm"></div>
     </form>
-  </div>
-  <footer class="text-muted bg-light">
-    <div class="container">
-      <p>Este sitio forma parte de Desarrollo Web - JAP - 2020</p>
-      <p>Clickea <a target="_blank" href="Letra.pdf">aquí</a> para descargar la letra del obligatorio.</p>
-    </div>
-  </footer>
-  <div class="alert fade alert-success" role="alert" id="alertResult">
-    <span id="resultSpan"></span>
-    <button type="button" class="close" data-dismiss="alert" aria-label="Close">
-      <span aria-hidden="true">&times;</span>
-    </button>
   </div>
   <div id="spinner-wrapper">
     <div class="lds-ring">

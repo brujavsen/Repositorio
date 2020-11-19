@@ -13,59 +13,6 @@
     }
 }
 
-.myCart {
-    margin-left: 70px;
-}
-
-.namePrd h2 {
-    font-size: 20px;
-}
-
-.showCnt{
-    inline-size: 80%;
-}
-
-.imgPrd img {
-    max-width: 60%;
-    display: block;
-    margin-top: 3px;
-    margin-bottom: 2px;
-}
-
-.priceCnt {
-    padding-bottom: 10px;
-    text-align: center;
-    inline-size: 20%;
-}
-
-.amountPrd input[type="number"] {
-    inline-size: 40%;
-    margin-top: 3px;
-}
-
-#subtotal, #costShip, #total {
-    inline-size: 20%;
-    margin-left: 45%;
-    font-size: 180%;
-}
-
-.table {
-    inline-size: 70%;
-    margin-left: 1%;
-}
-
-.badge {
-    width: auto; 
-    height: 30px; 
-    font-size: 20px;
-}
-
-#btnPay {
-    margin-bottom: 2%;
-}
-
-form {
-    inline-size: 85%;
-    margin-left: auto;
-    margin-right: auto;
+.img-cnt img {
+    width: 150px;
 }

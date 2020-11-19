@@ -2,62 +2,70 @@
 <!-- saved from url=(0049)https://getbootstrap.com/docs/4.3/examples/album/ -->
 <html lang="en">
 
-  <head>
-    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-    <meta name="description" content="">
-    <title>eMercado - Todo lo que busques está aquí</title>
+<head>
+  <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+  <meta name="description" content="">
+  <title>eMercado - Todo lo que busques está aquí</title>
 
-    <link rel="canonical" href="https://getbootstrap.com/docs/4.3/examples/album/">
-    <link href="https://fonts.googleapis.com/css?family=Raleway:300,300i,400,400i,700,700i,900,900i" rel="stylesheet">
-    <!-- Bootstrap core CSS -->
-    <link href="css/bootstrap.min.css" rel="stylesheet">
-    <link href="css/styles.css" rel="stylesheet">
-    <link href="css/logStyle.css" rel="stylesheet">
-    <script src="https://kit.fontawesome.com/806392c754.js" crossorigin="anonymous"></script>
-  </head>
-   
-  <body class="text-center">
+  <link rel="canonical" href="https://getbootstrap.com/docs/4.3/examples/album/">
+  <link href="https://fonts.googleapis.com/css?family=Raleway:300,300i,400,400i,700,700i,900,900i" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Oswald&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@600&display=swap" rel="stylesheet">
+  <!-- Bootstrap core CSS -->
+  <link href="css/bootstrap.min.css" rel="stylesheet">
+  <link href="css/styles.css" rel="stylesheet">
+  <link href="css/logStyle.css" rel="stylesheet">
+  <script src="https://kit.fontawesome.com/806392c754.js" crossorigin="anonymous"></script>
+</head>
 
-    <div class="container">
-      <form id="signin">
-
-        <img src="./img/login.png" width="300"><hr/>
-          <h1 id="first-title">Registro</h1>
-          <h2 class="title">Registrese para ingresar</h2>
-
-        <!-- Datos personales - Inputs -->
-
-          <div class="datos-user"> 
-
-            <i class="fas fa-user">
-              <label for="user" class="datos-style">Nombre completo</label></i><br>
-              <input type="text" name="nombreCompleto" id="inputUser" placeholder="Ingrese su nombre completo" required>
-
-            <i class="far fa-envelope">
-              <label for="email" class="datos-style">Correo electrónico</label></i><br>
-              <input type="email" name="correo" id="inputEmail" placeholder="Ingrese su correo electrónico" required>
-
-            
-            <i class="fas fa-key">
-              <label for="password" class="datos-style">Contraseña</label></i><br>
-              <input type="password" name="contraseña" id="inputPass" placeholder="Ingrese su contraseña" required>
-            <i class="far fa-eye" id="togglePass"></i>
+<body>
+  <img class="wave" src="./img/cover_login.png">
+  <div class="container">
+		<div class="login-content">
+      <form id="signin" action="index.html">
+        <img src="./img/login.png">
+        <h2 class="title">Registro</h2>
+        <div class="input-div user focus">
+          <div class="i">
+            <i class="fas fa-user"></i>
           </div>
-
-        <!-- Checkbox Remember Me -->
-          <div class="check-pass">
-            <label for="checkbox">
+          <div>
+            <h5>Nombre completo</h5>
+            <input type="text" name="nombreCompleto" id="inputUser" class="input" aria-describedby="helpId" required>
+          </div>
+        </div>
+        <div class="input-div email focus">
+          <div class="i">
+            <i class="far fa-envelope"></i>
+          </div>
+          <div>
+            <h5>Correo electrónico</h5>
+            <input type="email" name="nombreCompleto" id="inputEmail" class="input" aria-describedby="helpId" required>
+          </div>
+        </div>
+        <div class="input-div pass focus">
+          <div class="i">
+            <i class="fas fa-key"></i>
+          </div>
+          <div>
+            <h5>Contraseña</h5>
+            <input type="password" name="nombreCompleto" id="inputPass" class="input" aria-describedby="helpId" required>
+          </div>
+        </div>
+        <i class="fa fa-eye" id="togglePass"></i>
+        <div class="check-pass">
+          <label for="checkbox">
             <input type="checkbox" value="Recuerdame"> Recuérdame
-            </label>
-          </div>
-
-        <button class="buttonSignIn" type="submit">Registrar</button> 
-        
+          </label>
+        </div>
+        <input type="submit" class="btn" value="Registrar">
       </form>
     </div>
+  </div>
 
-    <script src="js/init.js"></script>
-    <script src="js/login.js"></script>
-  </body>
+  <script src="js/init.js"></script>
+  <script src="js/login.js"></script>
+</body>
+
 </html>

@@ -47,20 +47,25 @@
 
 footer {
   padding-top: 3rem;
-  padding-bottom: 3rem;
+  padding-bottom: 3rem; 
 }
 
 footer p {
   margin-bottom: .25rem;
 }
 
+.site-header {
+  background-image: linear-gradient(to right, #ce16166c, #8d414183, #dfd9d9);
+}
+
 .site-header a {
-  color: white;
+  color: rgb(245, 241, 241);
+  font-weight: bold;
   transition: ease-in-out color .15s;
 }
 
 .site-header, #userProfile:hover, a:hover {
-  color: orange;
+  color: rgb(16, 126, 43);
   text-decoration: none;
 }
 
@@ -163,8 +168,9 @@ a.custom-card:hover {
 
 /* Perfil */
 #userProfile {
-  color: rgb(111, 199, 71);
+  color: rgb(0, 0, 0);
   white-space: nowrap;
+  font-weight: bold;
 }
 
 #signOff {

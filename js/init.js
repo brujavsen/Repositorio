@@ -70,8 +70,6 @@ var getJSONData = function(url){
   let myProfileInfo = JSON.parse(localStorage.getItem('myInfoUser'));
 
   
-  
-  
 
 
 //Reloj en pantalla
