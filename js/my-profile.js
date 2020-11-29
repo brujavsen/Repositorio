@@ -1,23 +1,17 @@
-const profilePhoto = document.getElementById('photoProfile');
-const profileImg = document.getElementById('addImgProfile');
 const profileName = document.getElementById('nameProfile');
 const profileLastName = document.getElementById('lastNameProfile');
 const profileAge = document.getElementById('ageProfile');
 const profileEmail = document.getElementById('emailProfile');
 const profilePhone = document.getElementById('phoneProfile');
 const formChange = document.getElementById('formProfile');
-const classForm = document.getElementsByClassName('form-control');
 const btnChangeInfo = document.getElementById('changeInfo');
 const tableName = document.getElementById('showName');
 const tableLastName = document.getElementById('showLastName');
 const tableAge = document.getElementById('showAge');
 const tableEmail = document.getElementById('showEmail');
 const tablePhone = document.getElementById('showPhone');
-const emailErr = document.getElementById('errorEmail');
 const numberErr = document.getElementById('errorNumber');
 var changeMyInfo = {};
-var formInfoUser = {};
-var users = '';
 
 //muestra formulario
 btnChangeInfo.addEventListener('click', () => {
@@ -36,16 +30,6 @@ function formDataUser(){
             </div>
         `
         return false;
-    }else{
-        changeMyInfo = new Object(localStorage.setItem('myInfoUser', JSON.stringify(user)));
-        formInfoUser = JSON.parse(localStorage.getItem('myInfoUser'));
-        formChange.classList.add('hideForm');
-        tableName.innerHTML = formInfoUser[0].name;
-        tableLastName.innerHTML = formInfoUser[0].lastName;
-        tableAge.innerHTML = formInfoUser[0].age;
-        tableEmail.innerHTML = formInfoUser[0].email;
-        tablePhone.innerHTML = formInfoUser[0].phone;
-
     }
 }
 
@@ -63,22 +47,21 @@ formChange.addEventListener('submit', (e) => {
             phone: profilePhone.value
         }
     );
+    changeMyInfo = new Object(localStorage.setItem('myInfoUser', JSON.stringify(user)));
+    const tableInfo = JSON.parse(localStorage.getItem('myInfoUser'))
+    if (tableInfo) {
+        tableName.innerHTML = tableInfo[0].name;
+        tableLastName.innerHTML = tableInfo[0].lastName;
+        tableAge.innerHTML = tableInfo[0].age;
+        tableEmail.innerHTML = tableInfo[0].email;
+        tablePhone.innerHTML = tableInfo[0].phone;
+    }
+
     formDataUser();
 });
 
 function validationForm() {
-    // var email = /^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3,4})+$/
     var num = RegExp(/^\d{9}$/)
-
-    // profileEmail.addEventListener('keyup', ()=>{
-    //     if(!email.test(profileEmail.value)){
-    //         emailErr.innerHTML = `
-    //         <span style="color:red">Error</span> correo inválido
-    //         `
-    //     }else {
-    //         emailErr.innerHTML = ``
-    //     }
-    // });
 
     profilePhone.addEventListener('keyup', () => {
         if (!num.test(profilePhone.value)) {
@@ -98,14 +81,13 @@ function validationForm() {
 document.addEventListener("DOMContentLoaded", function (e) {
     validationForm();
 
-    users = JSON.parse(localStorage.getItem('myInfoUser'))
-    if (users) {
-        tableName.innerHTML = users[0].name;
-        tableLastName.innerHTML = users[0].lastName;
-        tableAge.innerHTML = users[0].age;
-        tableEmail.innerHTML = users[0].email;
-        tablePhone.innerHTML = users[0].phone;
+    tableInfo = JSON.parse(localStorage.getItem('myInfoUser'))
+    if (tableInfo) {
+        tableName.innerHTML = tableInfo[0].name;
+        tableLastName.innerHTML = tableInfo[0].lastName;
+        tableAge.innerHTML = tableInfo[0].age;
+        tableEmail.innerHTML = tableInfo[0].email;
+        tablePhone.innerHTML = tableInfo[0].phone;
     }
 
 });
-

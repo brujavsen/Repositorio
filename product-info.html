@@ -18,7 +18,7 @@
   <link href="https://fonts.googleapis.com/css2?family=Poppins:ital,wght@1,300&display=swap" rel="stylesheet">
 </head>
 
-<body onload="clockOnTime()">
+<body>
   <nav class="site-header sticky-top py-1">
     <div class="container d-flex flex-column flex-md-row justify-content-between">
       <a class="py-2 d-none d-md-inline-block" href="index.html">Inicio <i class="fas fa-home"></i></a>
@@ -35,13 +35,13 @@
         <a class="dropdown-item active btn-light" href="" id="cerrarSesion">Cerrar Sesión <i class="fas fa-sign-in-alt"
             id="signOff"></i></a>
       </div>
-      <div id="clock" class="card bg-info text-white"></div>
     </div>
   </nav>
 
   <div class="container">
     <div class="row">
       <div class="col-sm">
+        <!-- Carousel -->
         <div id="carouselIndicators" class="carousel slide" data-ride="carousel">
           <ol class="carousel-indicators">
             <li data-target="#carouselIndicators" data-slide-to="0" class="active"></li>
@@ -86,7 +86,7 @@
     </div>
   </div>
   <hr>
-  <!-- Conteneder de productos relaciones -->
+  <!-- Conteneder de productos relacionados -->
   <div class="container">
     <h2>Productos de relevancia:</h2>
     <div class="card-deck" id="relatedProd"></div>
@@ -97,21 +97,20 @@
   <div class="container">
     <h1><ins>Comentarios</ins></h1>
     <div id="contenedorComments"></div>
-    <div id="commUsr"></div>
+    <div id="new-comment-cnt"></div>
   </div>
 
   <hr />
   <!-- Clasificación -->
-  <div class="container" id="commentArea">
+  <div class="container">
     <form>
-      <input type="text" id="userComment" placeholder="Ingrese su nombre" required><br>
-      <textarea id="commentUsuario" name="comentario" cols="50" rows="7" placeholder="Deje su comentario"
+      <input type="text" id="user-name-comment" placeholder="Ingrese su nombre" required><br>
+      <textarea id="comment-text" name="comentario" cols="50" rows="7" placeholder="Deje su comentario"
         spellcheck="true" required></textarea><br>
-      <input type="number" id="clasificacion" min="1" max="5" placeholder="Clasf." required><br>
-      <button class="btn btn-info" onclick="createNewComment()" type="reset" id="submitComm">Enviar</button>
+      <input type="number" id="stars" min="1" max="5" placeholder="Clasf." required><br>
+      <button class="btn btn-info" onclick="createNewComment()" type="reset">Enviar</button>
     </form>
   </div>
-  <!-- Clasificación -->
 
   <div class="goBack custom-card container">
     <a class="custom-card" href="./products.html">Volver a productos</a>

@@ -1,0 +1,36 @@
+				Las aventuras en el país del código abierto
+
+A lo largo del obligatorio, nos fuimos encontrando con ciertas dificultades, vamos a proceder a nombrar algunas de ellas:
+
+-En la última entrega, a  Bruno le surgieron dificultades en la instalación del paquete express, había instalado de forma errónea y el problema se solucionó al reinstalar el paquete. 
+-Otro "Desafíate" que le generó complicaciones a Bruno fue el de el generador de comentarios en cuanto a la permanecencia del comentario realizado en la página, se encontró con un video en youtube que le resolvió el problema de la siguiente forma: cambiando la metodología que venia aplicando, tuvo que realizar 3 funciones en la cuál la priumera, era para guardar
+los datos de lo que ingresa el usuario, luego hizo otra función que cuando el usuario seleccione la cantidad de estrellas lo guardara, y por íltimo otra funcion donde presentara en pantalla ambas cosas.
+-En la entrega donde se generaba un modal en el carrito, Bruno quería seleccionar una opción de los input entre la tarjeta de crédito y la cuenta bancaria y se le seleccionaban las 2 al mismo tiempo.
+Después de buscar en internet, encontró en StackOverflow una solución a su problema: utilizó otra manera para seleccionar los input mediante querySelector().
+
+- Christian se encontró con un problema al no encontrar los nombres de propiedades de un array que esta dentro del json, al buscar dicho problema en internet, encontró, através de un método llamado objects.keys, que podía obtenerlo mediante ese cóodigo siendo más funcional y práctico. 
+-Otra entrega de "Desafíate" que fue complicada para Christian fue la de la autenticación de Google, se requería una fuente local para que le permitiera hacer tal autenticación y le salía un error, buscando en internet, se topó con la página Google Developers, que le explicó el motivo de su problema;
+ el cuál era que en vez de abrir directamente el archivo html en el navegador, él tenía que abrirlo desde una fuente local, en este caso utilizo localhost:3000/. 
+
+-En el "Desafíate" del carrito, Alan se encontró un desafío para hacer el subtotal porque este no le aparecía en la página, hablando con Hernán, llegaron a la solución de hacer un generador de ID en el input y en el resultado, poniendo luego los resultados en un objeto (parseInt(valores)) y mostrándolos en pantalla con el .innerHTML.
+-En la entrega de la creación del perfil, Alan tuvo problemas a la hora de mostrar los datos en pantalla desde el localstorage, el problema era que él tenía todo dentro de una misma función,y llegó a la solución haciendo dos funciónes aparte, una guardando los datos en el localStorage.setItem("click", JSON.stringify(informacion)) y otra 
+con el JSON.parse(localStorage.getItem('click')) sacar los objetos del localstorage y mostrarlos en la página.
+
+
+-Luego, en previas entregas también surgieron dificultades respecto al manejo de CSS en la página; a Danilo le resultaba complicado posicionar elementos en la página. Cuando Hernán dio una clase sobre Flex-box, tuvo un mayor entendimiento y supo como poner mejor como los elementos en la página.
+-En otra entrega, Danilo tuvo complicaciones para colocar el nombre de usuario en la barra de navegación, el problema era que él obtenía el nombre de usuario pero le aparecía en cualquier otra parte de la página. Gracias al intercambio con sus compañeros, logró resolver este problema conectando el dato que salía del localstorage 
+en un <a id="..."> en una etiqueta vacía en el <nav>.
+
+-En cuanto a Lucía Moreno, la principal dificultad que se le presentó en el obligatorio 8, fue en la instalación del programa NODE ya que había utilizado 32 bit em vez de 64 bit, al desinstalarlo e instalar nuevamente el que correspondía pude solucionar el problema. 
+-Posteriormente, en cuánto a la entrega 8, debido a inasistencias justificadas, la estudiante no había podido desarrollar y comprender algunos conceptos sobre la función y la consigna, lo que se solucionó gracias a la ayuda del compañero Alan Pizzo a través de una explicación durante el breakout de como almacenar los json y como utilizar las funciones, tuve un
+mayor entendimiento del paquete express.
+-Con respecto a las entregas de product-info.js, me costo realizar la función para generar los comentarios, ya que no sabía utilizar la lógica del htmlContentToAppend= ""; con la api. Gracias a la ayuda de Hernan, pudimos realizar dicha funcion y a su vez encontramos los datos del json para importarlos y luego mostrarlos en pantalla.
+Y en la función de showRelatedPrducts() me costo mostrar los 2 productos en pantalla por lo que encontre la solución concatenando de esta manera: document.getElementById("Related").innerHTML = document.getElementById("Related").innerHTML + htmlRelated;
+-Y por último. En la entrega del carrito de compras, las dificultades se presentaron en el cálculo del total, donde fueron solucionadas a través del codigo: document.getElementById("total").innerHTML = totalPorArt + ((totalPorArt * document.getElementById('methodSendOptions').value) / 100);. 
+
+Bruno Sena
+Christian Campero
+Alan Pizzo
+Danilo de los Reyes
+Lucia Moreno
+

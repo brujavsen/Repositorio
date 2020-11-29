@@ -1,14 +1,10 @@
 *{
 	padding: 0;
 	margin: 0;
+	font-family: 'Poppins', sans-serif;
 }
 
-body{
-    font-family: 'Poppins', sans-serif;
-	overflow: hidden;
-}
-
-.wave{
+.bkg-img{
 	position: fixed;
 	height: 130%;
 	z-index: -1;
@@ -17,15 +13,12 @@ body{
 .container{
 	display: flex;
 	justify-content: center;
+	justify-items: center;
 	text-align: center;
 }
 
-form{
-	width: 450px;
-}
-
 .login-content img{
-    height: 170px;
+    height: 160px;
 }
 
 .login-content h2{
@@ -37,14 +30,12 @@ form{
 .login-content .input-div{
 	position: relative;
 	display: grid;
-	grid-template-columns: 7% 93%;
 	margin: 30px 0;
 }
 
-.i {
+.i i{
 	display: flex;
-	justify-content: center;
-	align-items: center;
+	transform: translate(0, 25px);
 }
 
 .input-div > div{
@@ -54,51 +45,33 @@ form{
 
 .input-div > div > h5{
 	position: absolute;
+	margin: 0 20px;
   	color: rgb(252, 252, 252);
   	text-shadow: 2px 2px 2px black;
 	font-size: 17px;
 	font-weight: bold;
-	transition: .3s;
 	top: -20px;
 	background-image: linear-gradient(to right, #d82c2c, #d82c2c, #d82c2c);
 	border-radius: 5px;
 	box-shadow: 2px 2px 2px rgb(119, 115, 115);
 }
 
-.input-div:before, .input-div:after{
-	content: '';
-	position: absolute;
-	bottom: -2px;
-	width: 0%;
-	height: 2px;
-	background-color: #050505;
-	transition: .4s;
-}
-
-.input-div:before{
-	right: 50%;
-}
-
-.input-div:after{
-	left: 50%;
-}
-
-.input-div.focus:before, .input-div.focus:after{
-	width: 50%;
-}
-
 .input-div > div > input{
 	position: absolute;
 	left: 0;
-	top: 0;
 	width: 100%;
 	height: 100%;
 	border: none;
 	outline: none;
 	background: none;
+	border-bottom: 2px solid #000;
 	font-size: 18px;
 	color: rgb(0, 0, 0);
 	font-family: 'poppins', sans-serif;
+}
+
+#togglePass {
+	font-size: 20px;
 }
 
 .btn{
@@ -119,4 +92,6 @@ form{
 
 .btn:hover{
 	color: rgb(0, 0, 0);
+	transform: translateY(5px);
+	transition: ease-in-out 1s;
 }

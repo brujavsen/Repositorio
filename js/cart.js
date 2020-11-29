@@ -16,6 +16,8 @@ const numberCard = document.getElementById('numCardInput');
 const cvvCard = document.getElementById('cvvCardInput');
 const expirCard = document.getElementById('cardExpInput');
 const numberAccount = document.getElementById('numAccount');
+var per;
+var round;
 var subtotal = [];
 let total = [];
 let converUSDaUY = 40;
@@ -61,6 +63,8 @@ function showInfoCart(data) {
     for (let j = 0; j < data.length; j++) {
         document.getElementById("input" + j).addEventListener('change', function showSubtotal() {
 
+            var amount;
+
             //Recorro el objeto
             for (let index in data) {
                 amount = document.getElementsByClassName('amountUser')[index].value;
@@ -79,9 +83,9 @@ function showInfoCart(data) {
 
 //Inicio: Muestra total con selección de tipo de envío
 PremiumInput.addEventListener('change', () => {
-
     if (PremiumInput.checked) {
-        var per = parseInt(subtotal) * percentPremium;
+        per = parseInt(subtotal) * percentPremium;
+        round = Math.round(per)
         costShipCnt.innerHTML = per + " UYU";
     } else if (!PremiumInput.checked) {
         totalCnt.innerHTML = subtotal + " UYU";
@@ -113,6 +117,7 @@ ExpressInput.addEventListener('change', () => {
 StandardInput.addEventListener('change', () => {
     if (StandardInput.checked) {
         per = parseInt(subtotal) * percentStandard;
+        round = Math.round(per);
         costShipCnt.innerHTML = per + " UYU";
     } else if (!StandardInput.checked) {
         totalCnt.innerHTML = subtotal + " UYU"
@@ -125,6 +130,7 @@ StandardInput.addEventListener('change', () => {
     }
 });
 //Fin: Muestra total con selección de tipo de envío
+
 
 //Cambia atributos de modal de formas de pago, interactua con los cambios a selección
 
@@ -289,6 +295,3 @@ document.addEventListener('DOMContentLoaded', () => {
         }
     });
 });
-
-
-

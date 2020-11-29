@@ -1,3 +1,9 @@
+function getParameterByName(name) {
+    name = name.replace(/[\[]/, "\\[").replace(/[\]]/, "\\]");
+    var regex = new RegExp("[\\?&]" + name + "=([^&#]*)"),
+    results = regex.exec(location.search);
+    return results === null ? "" : decodeURIComponent(results[1].replace(/\+/g, " "));
+}
 //Información del producto
 fetch(PRODUCT_INFO_URL)
     .then(response => response.json())
@@ -17,9 +23,9 @@ fetch(PRODUCT_INFO_URL)
                 </thead>
                 <tbody>
                     <tr>
-                        <th> `+ info.name + `</th>
+                        <td id="nameTh"></td>
                         <td class="badge badge-success">`+ info.currency + " " + info.cost + `</td>
-                        <th>`+ info.soldCount + `</th>
+                        <td>`+ info.soldCount + `</td>
                         <td class="badge badge-danger">`+ info.category + `</td>
                     </tr>
                 </tbody>
@@ -92,6 +98,7 @@ function showProductRel(dataRel, dataList) {
             `
     };
 
+    
     document.getElementById('relatedProd').innerHTML = htmlContentProdRel;
 };
 
@@ -117,12 +124,17 @@ document.addEventListener("DOMContentLoaded", function () {
             getJSONData(PRODUCTS_URL)
                 .then(function (resObj) {
                     var listadoPrd = resObj.data;
-                    console.log(infoProd);
-                    console.log(listadoPrd);
+                    // console.log(infoProd);
+                    // console.log(listadoPrd);
 
                     //Muestra productos relacionados
                     showProductRel(infoProd, listadoPrd);
 
+                    //Muestra en pantalla el nombre del producto seleccionado
+                    let param = getParameterByName('product');
+                    let nameTh = document.getElementById('nameTh');
+                    nameTh.innerHTML = `${param}`
+                    
                 });
         });
 
@@ -131,81 +143,79 @@ document.addEventListener("DOMContentLoaded", function () {
 
 //Hora/fecha local
 
-var fecha = new Date();
-var dia = fecha.getDate();
-var mes = fecha.getMonth();
-var ano = fecha.getFullYear();
-if (dia < 10) {
-    dia = '0' + dia;
+var date = new Date();
+var day = date.getDate();
+var month = date.getMonth();
+var year = date.getFullYear();
+if (day < 10) {
+    day = '0' + day;
 }
-if (mes < 10) {
-    mes = '0' + mes;
+if (month < 10) {
+    month = '0' + month;
 }
-var hora = fecha.getHours();
-var minutos = fecha.getMinutes();
-var segundos = fecha.getSeconds();
-fecha = dia + '-' + mes + '-' + ano + ' ' + hora + ':' + minutos + ':' + segundos;
+var hour = date.getHours();
+var minutes = date.getMinutes();
+var seconds = date.getSeconds();
+date = day + '-' + month + '-' + year + ' ' + hour + ':' + minutes + ':' + seconds;
 
 //Crear un nuevo comentario
 
-let newComm = document.getElementById('commentUsuario');
-let starComm = document.getElementById('clasificacion');
-let usrCommName = document.getElementById('userComment');
-let commentUser = document.getElementById('commUsr');
+let userNameComment = document.getElementById('user-name-comment');
+let commentText = document.getElementById('comment-text');
+let starComment = document.getElementById('stars');
+let newCommentCnt = document.getElementById('new-comment-cnt');
 
 function createNewComment() {
 
     //Datos ingresados por el usuario
-    function commentUsuario(nombre, comentario, estrellitas, fechaActual) {
-        this.nombre = nombre;
-        this.comentario = comentario;
-        this.estrellitas = estrellitas;
-        this.fechaActual = fechaActual;
+    function commentUsuario(name, comment, star, date) {
+        this.name = name;
+        this.comment = comment;
+        this.star = star;
+        this.date = date;
     }
 
-    var nombreUser = usrCommName.value;
-    var comentarioUsr = newComm.value;
-    var starCommty = starComm.value;
-    var todayPrest = fecha;
+    var nombreUser = userNameComment.value;
+    var comentarioUsr = commentText.value;
+    var starCommty = starComment.value;
+    var todayPrest = date;
 
     //Crear nuevo comentario
-    nuevoComentario = new commentUsuario(nombreUser, comentarioUsr, starCommty, todayPrest);
-    console.log(nuevoComentario);
+    newCommentUser = new commentUsuario(nombreUser, comentarioUsr, starCommty, todayPrest);
+    console.log(newCommentUser);
     showComentary();
-
 };
 
 //Guarda nuevo comentario en array
 var newCommentary = [];
 
 //Selección de estrellas
-
 function newStarComment(starCount) {
 
-    let commUser = "";
-    for (let i = 0; i < starCount.estrellitas; i++) {
-        commUser += `
+    let starComment = "";
+    for (let i = 0; i < starCount.star; i++) {
+        starComment += `
             <small class="text-muted"><span class="fa fa-star checked"></span></small>
             `;
     }
-    return commUser;
+    return starComment;
 }
 
 //Muestra comentario en pantalla
 function showComentary() {
-    newCommentary.push(nuevoComentario);
-    commentUser.innerHTML += `
+    newCommentary.push(newCommentUser);
+    newCommentCnt.innerHTML += `
         <div>
             <div>
-                <h2>`+ nuevoComentario.nombre + `<small class="text-muted">` + newStarComment(nuevoComentario) + `</small>` + `</h2>
+                <h2>`+ newCommentUser.name + `<small class="text-muted">` + newStarComment(newCommentUser) + `</small>` + `</h2>
             </div>
             <br>
             <div>
-                <small>`+ nuevoComentario.comentario + `</small>
+                <small>`+ newCommentUser.comment + `</small>
             </div>
             <br>
             <div>
-                <small>`+ nuevoComentario.fechaActual + `</small>
+                <small>`+ newCommentUser.date + `</small>
             </div>
         </div>`
 }
