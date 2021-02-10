@@ -13,7 +13,7 @@ fetch(PRODUCT_INFO_URL)
         showProductInfo.innerHTML = `
         
             <table class="table">
-                <thead>
+                <thead> 
                     <tr>
                         <th scope="col">Nombre</th>
                         <th scope="col">Costo</th>

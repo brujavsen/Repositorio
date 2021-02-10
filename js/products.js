@@ -21,8 +21,8 @@ function showProductList(products){
                     <h3 class="m-3">`+ category.name +`</h3>
                     <div class="card-body">
                         <p class="card-text">` + category.description +`</p>
-                        <small class="badge badge-primary">`+ category.soldCount +` articulos</small><br>
-                        <small class="badge badge-success">`+ category.cost + " " + category.currency +` </small>
+                        <p class="badge badge-primary">`+ category.soldCount +` articulos</p><br>
+                        <p class="product-price">`+ category.cost + " " + category.currency +` </p>
                     </div>
                 </a> 
             </div>

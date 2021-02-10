@@ -1,14 +1,54 @@
+:root {
+	--color-primario: #e62d83;
+  --color-boton: #006644;
+  --verde: #138b4b;
+  --rojo: #FF2200;
+  --negro: #000;
+  --blanco: #FFF;
+  --gris: #777;
+
+  /* Fuente */
+  --fuente-principal: 'Raleway', monospace;
+}
+
+/* Nav */
+.nav{
+  font-family: var(--fuente-principal);
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 8px;
+  background-color: var(--blanco);
+  border-bottom: 8px solid var(--color-primario);
+}
+@media (min-width: 768px) {
+    .nav {
+      flex-direction: row;
+      height: 65px;
+    }
+}
+.nav__link{
+  text-decoration: none;
+  color: var(--negro);
+  font-weight: 700;
+  font-size: 18px;
+  text-shadow: 1px 1px 1px var(--color-primario);
+}
+.nav__link:hover {
+  text-decoration: none;
+  color: var(--negro);
+}
+
+/* Hero */
 .jumbotron, .card-body, .container, .site-header{
     font-family: 'Raleway', serif !important;
 }
-
 .jumbotron .display-4{
-    font-weight: bold;
+  font-weight: bold;
 }
 
 .jumbotron {
-  height: 50vh;
-  padding: 5em inherit;
+  height: 100%;
   margin-bottom: 0;
   background-color: #53C0FB;
   background: url('../img/cover_back.png');
@@ -23,8 +63,10 @@
   .jumbotron {
     padding-top: 6rem;
     padding-bottom: 6rem;
+    width: 100%;
   }
 }
+
 
 .jumbotron p:last-child {
   margin-bottom: 0;
@@ -45,6 +87,7 @@
   font-size: 38px;
 }
 
+/* Footer */
 footer {
   padding-top: 3rem;
   padding-bottom: 3rem; 
@@ -52,34 +95,6 @@ footer {
 
 footer p {
   margin-bottom: .25rem;
-}
-
-.site-header {
-  background-image: linear-gradient(to right, #ce16166c, #8d414183, #dfd9d9);
-}
-
-.site-header a {
-  color: rgb(245, 241, 241);
-  font-weight: bold;
-  transition: ease-in-out color .15s;
-}
-
-.site-header, #userProfile:hover, a:hover {
-  color: rgb(16, 126, 43);
-  text-decoration: none;
-}
-
-.site-header a:active {
-  color: brown;
-}
-
-
-.light-text {
-  color: white;
-}
-
-.site-header .dropdown-menu a {
-  color: black;
 }
 
 .dropzone{
@@ -154,51 +169,44 @@ a.custom-card:hover {
 .checked {
   color: orange;
 }
-
-#cat-style {
-  text-align: center;
-  font-size: 300%;
-}
-
-#cat-style2 {
-  text-align: center;
-  font-size: 100%;
-  margin-bottom: 20px;
-}
-
-/* Perfil */
+/* Perfil username*/
 #userProfile {
-  color: rgb(0, 0, 0);
-  white-space: nowrap;
+  color: var(--blanco);
   font-weight: bold;
+  background-color: var(--verde);
+  border-radius: 1rem;
 }
 
 #signOff {
   margin-left: auto;
   font-size: 18px;
-  color: rgb(207, 20, 20);
+  color: var(--rojo);
   white-space: nowrap;
 }
 
+/* Dropdown */
+.dropdown-item {
+  color: var(--blanco);
+}
 
-/* Reloj en pantalla */
-#clock {
-  background-image: url("https://entrazos.com/wp-content/uploads/2014/12/nieve.gif");
-  background-size: cover;
-  font-family: monospace;
-  font-size: 15px;
-  color: #fff;
+/* Productos */
+.cat-style {
+  text-align: center;
+  font-size: 2.5rem;
+  font-weight: 700;
+}
+
+.cat-style2 {
+  text-align: center;
+  font-size: 1rem;
+  margin-bottom: 20px;
+}
+
+.product-price {
+  background-color: var(--gris);
+  color: var(--blanco);
   width: 100px;
-  margin-left: -100px;
-  align-items: center;
-  margin-inline-end: -100px;
-  border: 2px solid white;
-  border-radius: 90px 90px 90px 90px;
+  border-radius: .3rem;
+  text-align: center;
+  font-size: 18px;
 }
-
-#clock:hover {
-  transform: rotate(360deg);
-  transition: ease-in-out 1s;
-}
-
-

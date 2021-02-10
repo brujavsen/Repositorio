@@ -1,5 +1,11 @@
 @charset "utf-8";
 
+:root {
+    --color-boton: #d82c2c;
+    --negro: #000;
+    --blanco: #FFF;
+}
+
 body{
     margin: 0;
     padding: 0;
@@ -8,7 +14,7 @@ body{
 }
 
 .container{
-    margin-top: 10px;
+    margin-top: 10px; 
     border: 2px black;
 }
 
@@ -61,16 +67,9 @@ form input[type="text"] {
 /*Volver atrás*/
 .goBack{
     text-align: center;
-    width: 20%;
-	height: 50px;
-	border-radius: 25px;
-	outline: none;
-	border: none;
-	background-image: linear-gradient(to right, #d82c2c, #d82c2c, #d82c2c);
-	background-size: 50%;
 	font-size: 20px;
-	color: rgb(255, 255, 255);
+	color: var(--negro);
 	font-family: 'Poppins', sans-serif;
-    transition: .5s;
-    margin-bottom: 10px;
+    font-weight: bold;
+    padding: 2rem;
 }

@@ -8,62 +8,62 @@
   <meta name="description" content="">
   <title>eMercado - Todo lo que busques está aquí</title>
 
-  <link rel="canonical" href="https://getbootstrap.com/docs/4.3/examples/album/">
-  <link href="https://fonts.googleapis.com/css?family=Raleway:300,300i,400,400i,700,700i,900,900i" rel="stylesheet">
-  <link href="https://fonts.googleapis.com/css2?family=Oswald&display=swap" rel="stylesheet">
-  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@600&display=swap" rel="stylesheet">
   <!-- Bootstrap core CSS -->
+  <link rel="canonical" href="https://getbootstrap.com/docs/4.3/examples/album/">
   <link href="css/bootstrap.min.css" rel="stylesheet">
-  <link href="css/styles.css" rel="stylesheet">
+  
+  <!-- Preload -->
+  <link rel="preload" href="https://fonts.googleapis.com/css2?family=Poppins:wght@600&display=swap" as="font">
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@600&display=swap" rel="stylesheet">
+  
+  <link rel="preload" href="css/styles.css" as="style">
+  <link href="css/styles.css" rel="stylesheet"> 
+
+  <link rel="preload" href="css/styles.css" as="style">
   <link href="css/logStyle.css" rel="stylesheet">
   <script src="https://kit.fontawesome.com/806392c754.js" crossorigin="anonymous"></script>
 </head>
 
 <body>
-  <img class="bkg-img" src="./img/cover_login.png">
-  <div class="container">
-		<div class="login-content">
-      <form id="signin" action="index.html">
-        <img src="./img/login.png">
-        <h2 class="title">Registro</h2>
-        <div class="input-div user focus">
-          <div class="i">
+    <section class="form-container">
+      <form class="flex-container box-shdw" id="signin" action="index.html">
+        <div class="form-title">
+          <img src="./img/login.png">
+          <h1 class="title txt-shdw">Registro</h1>
+        </div>
+        <div class="flex-items">
+          <div class="items txt-shdw">
             <i class="fas fa-user"></i>
           </div>
-          <div>
-            <h5>Nombre completo</h5>
-            <input type="text" name="nombreCompleto" id="inputUser" class="input" aria-describedby="helpId" required>
+          <div class="inputs">
+            <label for="inputUser">Nombre</label>
+            <input type="text" class="inputs__option" name="nombreCompleto" id="inputUser" required>
           </div>
         </div>
-        <div class="input-div email focus">
-          <div class="i">
+        <div class="flex-items">
+          <div class="items txt-shdw">
             <i class="far fa-envelope"></i>
           </div>
-          <div>
-            <h5>Correo electrónico</h5>
-            <input type="email" name="nombreCompleto" id="inputEmail" class="input" aria-describedby="helpId" required>
+          <div class="inputs">
+            <label for="inputEmail">Correo</label>
+            <input type="email" class="inputs__option" name="nombreCompleto" id="inputEmail" required>
           </div>
         </div>
-        <div class="input-div pass focus">
-          <div class="i">
+        <div class="flex-items">
+          <div class="items txt-shdw">
             <i class="fas fa-key"></i>
           </div>
-          <div>
-            <h5>Contraseña</h5>
-            <input type="password" name="nombreCompleto" id="inputPass" class="input" aria-describedby="helpId" required>
+          <div class="inputs">
+            <label for="inputPass">Contraseña</label>
+            <input type="password" class="inputs__option" name="nombreCompleto" id="inputPass" required>
           </div>
         </div>
-        <i class="fa fa-eye" id="togglePass"></i>
-        <div class="check-pass">
-          <label for="checkbox">
-            <input type="checkbox" value="Recuerdame"> Recuérdame
-          </label>
+        <div class="btn-cnt">
+          <input type="submit" class="btn-cnt__button txt-shdw box-shdw" id="btn" value="Registrar">
         </div>
-        <input type="submit" class="btn" value="Registrar">
       </form>
-    </div>
-  </div>
-
+    </section>
+    <!-- Scripts -->
   <script src="js/init.js"></script>
   <script src="js/login.js"></script>
 </body>
